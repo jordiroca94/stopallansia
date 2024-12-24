@@ -20,8 +20,8 @@ body {
   overflow-y: auto;
   position: absolute;
   top: 0;
-  left: -25%;
-  right: -25%;
+  left: 0;
+  right: 0;
   bottom: 0;
 }
 
