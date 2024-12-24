@@ -6,8 +6,11 @@ import Parallax from "@/components/Parallax";
 export default function Home() {
   return (
     <main>
-      <Header />
-      <Parallax />
+      <div className="relative">
+        <Header />
+        <Parallax />
+        <div className="bg-white">FOOTER </div>
+      </div>
     </main>
   );
 }

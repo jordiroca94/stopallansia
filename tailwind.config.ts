@@ -7,6 +7,9 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      secondary: "Kelsi, sans-serif",
+    },
     extend: {
       colors: {
         black: "#2d112b",
