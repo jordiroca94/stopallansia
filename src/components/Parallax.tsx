@@ -8,6 +8,8 @@ import Layer6 from "../../public/images/layer6.png";
 import Countdown from "./Countdown";
 
 const Parallax = () => {
+  const year: number = new Date().getFullYear();
+
   return (
     <div className="parallax">
       <div className="parallax__layer parallax__layer__0">
@@ -60,6 +62,17 @@ const Parallax = () => {
               Stop all Ansia Festival is a creative retreat that unites nature,
               people and art in a journey away from everyday anxiety.
             </p>
+          </div>
+        </div>
+        <div className="flex justify-center items-center p-10 border-t border-cream bg-black text-white">
+          <div className="text-base">
+            &copy; {year} By{" "}
+            <a
+              className="hover:underline hover:text-secondary"
+              href="https://github.com/jordiroca94/"
+            >
+              Jordi Roca
+            </a>
           </div>
         </div>
       </div>
