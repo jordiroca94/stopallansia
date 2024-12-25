@@ -6,7 +6,10 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #2d112b;
 }
@@ -23,6 +26,13 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    perspective: 300px; /* Increased perspective for mobile devices */
+    height: 80vh;
+  }
 }
 
 .parallax__layer {
