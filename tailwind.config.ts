@@ -12,9 +12,9 @@ export default {
     },
     extend: {
       colors: {
+        primary: "#FF2F3D",
         black: "#2d112b",
         cream: "#FEDCC8",
-        foreground: "var(--foreground)",
       },
     },
   },

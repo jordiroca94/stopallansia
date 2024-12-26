@@ -50,7 +50,7 @@ const Parallax = () => {
           <h5 className="text-lg font-bold uppercase text-gray-300">
             Private event
           </h5>
-          <div className="max-w-[350px] lg:max-w-[700px] text-lg flex flex-col gap-3 font-semibold w-full px-4 ">
+          <div className="max-w-[350px] lg:max-w-[700px] text-lg flex flex-col gap-3 font-semibold w-full text-justify">
             <p>
               An experience that invites one to experience, grow and live in the
               present with an open heart and mind.

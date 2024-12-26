@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Stop all ansia",
-  description: "Stop all ansia",
+  description:
+    "Stop all'Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety",
 };
 
 export default function RootLayout({
