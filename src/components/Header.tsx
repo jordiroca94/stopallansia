@@ -10,7 +10,10 @@ const Header = () => {
       >
         LOGO
       </Link>
-      <button className="font-extrabold text-lg uppercase">Get tickets</button>
+
+      <button className="font-extrabold text-lg uppercase transition-transform duration-300 hover:scale-110">
+        Get tickets
+      </button>
     </div>
   );
 };

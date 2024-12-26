@@ -9,7 +9,6 @@ export default function Home() {
       <div className="relative">
         <Header />
         <Parallax />
-        <div className="bg-white">FOOTER </div>
       </div>
     </main>
   );

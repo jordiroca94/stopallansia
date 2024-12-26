@@ -18,20 +18,11 @@ body {
 .parallax {
   background-color: #fedcc8;
   perspective: 100px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 @media (max-width: 768px) {
   .parallax {
-    perspective: 300px; /* Increased perspective for mobile devices */
-    height: 80vh;
+    perspective: 300px;
   }
 }
 

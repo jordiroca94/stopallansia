@@ -6,12 +6,11 @@ import Layer4 from "../../public/images/layer4.png";
 import Layer5 from "../../public/images/layer5.png";
 import Layer6 from "../../public/images/layer6.png";
 import Countdown from "./Countdown";
-
+import { FaInstagram } from "react-icons/fa";
+import Logo from "../icons/footerLogo";
 const Parallax = () => {
-  const year: number = new Date().getFullYear();
-
   return (
-    <div className="parallax">
+    <div className="parallax inset-0 absolute overflow-x-hidden overflow-y-auto h-screen ">
       <div className="parallax__layer parallax__layer__0">
         <img src={Layer0.src} />
       </div>
@@ -67,14 +66,17 @@ const Parallax = () => {
           </div>
         </div>
         <div className="flex justify-center items-center p-10 border-t border-cream bg-black text-white">
-          <div className="text-base">
-            &copy; {year} By{" "}
+          <div className="flex flex-col justify-center items-center gap-4">
             <a
-              className="hover:underline hover:text-secondary"
-              href="https://github.com/jordiroca94/"
+              className="flex flex-col gap-2 items-center"
+              href="https://www.instagram.com/stop.all.ansia/"
             >
-              Jordi Roca
+              <h5 className="text-center font-bold text-base hover:underline">
+                Stay updated on the latest info
+              </h5>
+              <FaInstagram className="size-6 lg:size-7 transition-transform duration-300 hover:scale-125" />
             </a>
+            <div>{Logo}</div>
           </div>
         </div>
       </div>
