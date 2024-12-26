@@ -8,9 +8,13 @@ import Layer6 from "../../public/images/layer6.png";
 import Countdown from "./Countdown";
 import { FaInstagram } from "react-icons/fa";
 import Logo from "../icons/footerLogo";
+import Link from "next/link";
+import Header from "./Header";
+
 const Parallax = () => {
   return (
     <div className="parallax inset-0 absolute overflow-x-hidden overflow-y-auto h-screen ">
+      <Header />
       <div className="parallax__layer parallax__layer__0">
         <img src={Layer0.src} />
       </div>
@@ -64,6 +68,12 @@ const Parallax = () => {
               people and art in a journey away from everyday anxiety.
             </p>
           </div>
+          <Link
+            href="/reserve"
+            className="font-extrabold text-lg uppercase border-white border-2 py-2 px-6 rounded-lg hover:bg-white hover:text-black"
+          >
+            Reserve your spot
+          </Link>
         </div>
         <div className="flex justify-center items-center p-10 border-t border-cream bg-black text-white">
           <div className="flex flex-col justify-center items-center gap-4">
