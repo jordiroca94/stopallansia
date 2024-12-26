@@ -3,7 +3,7 @@ import Logo from "../icons/logo";
 
 const Header = () => {
   return (
-    <header className="absolute top-0 text-black z-50 flex justify-between w-full py-5 px-10 bg-transparent">
+    <header className="absolute top-0 text-black z-50 flex justify-between items-center w-full py-5 px-10 bg-transparent">
       <Link href="/" className="font-bold text-2xl uppercase font-secondary">
         {Logo}
       </Link>

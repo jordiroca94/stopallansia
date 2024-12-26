@@ -82,3 +82,7 @@ body {
 .parallax__layer__7 {
   transform: translateZ(-400px) scale(5);
 }
+
+.parallax__layer__8 {
+  transform: translateZ(50px) scale(0.5);
+}

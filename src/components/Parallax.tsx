@@ -5,6 +5,7 @@ import Layer3 from "../../public/images/layer3.png";
 import Layer4 from "../../public/images/layer4.png";
 import Layer5 from "../../public/images/layer5.png";
 import Layer6 from "../../public/images/layer6.png";
+import Layer7 from "../../public/images/rocket.png";
 import Countdown from "./Countdown";
 import { FaInstagram } from "react-icons/fa";
 import Logo from "../icons/footerLogo";
@@ -35,6 +36,9 @@ const Parallax = () => {
       </div>
       <div className="parallax__layer parallax__layer__6">
         <img src={Layer6.src} />
+      </div>
+      <div className="parallax__layer parallax__layer__8 sm:hidden">
+        <img className="size-96" src={Layer7.src} />
       </div>
       <div className="parallax__layer parallax__layer__7 flex justify-center items-center text-center">
         <div className="flex flex-col mb-[15%] text-black">
