@@ -41,14 +41,14 @@ const Parallax = () => {
         <img className="size-96" src={Layer7.src} />
       </div>
       <div className="parallax__layer parallax__layer__7 flex justify-center items-center text-center">
-        <div className="flex flex-col mb-[15%] text-black">
-          <h1 className="text-xl lg:text-6xl font-bold font-secondary">
+        <div className="flex flex-col mb-[35%] sm:mb-[15%] text-black">
+          <h1 className="text-xl md:text-6xl font-bold font-secondary">
             STOP ALL ANSIA
           </h1>
-          <h2 className="text-sm lg:text-2xl font-bold py-2">
+          <h2 className="text-sm md:text-2xl font-bold py-2">
             01.07 - 03.07.2025
           </h2>
-          <h3 className="text-sm lg:text-2xl font-bold uppercase">Mallorca</h3>
+          <h3 className="text-sm md:text-2xl font-bold uppercase">Mallorca</h3>
         </div>
       </div>
       <div className="parallax__cover">
