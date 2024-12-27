@@ -5,6 +5,10 @@ import AboutImage from "../../public/images/about.png";
 import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
 import TextAnimation from "./animations/TextAnimation";
+import { CiLocationOn } from "react-icons/ci";
+import { RiTentLine } from "react-icons/ri";
+import { IoFastFoodOutline } from "react-icons/io5";
+
 // swiperjs.com
 const About = () => {
   const cards = [
@@ -12,16 +16,19 @@ const About = () => {
       title: "Location",
       description:
         "Far from everyday worries, surrounded by nature: this is where Stop all'Ansia happens. Info in Instagram DM.",
+      icon: <CiLocationOn className="size-8" />,
     },
     {
       title: "Accomodation",
       description:
         "To stay, bring your own tent and camp in the designated area. Basic amenities are provided: restrooms are available.",
+      icon: <RiTentLine className="size-8" />,
     },
     {
       title: "Eat & Drink",
       description:
         "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site).You are also welcome to bring your own food.",
+      icon: <IoFastFoodOutline className="size-8" />,
     },
   ];
 
@@ -55,11 +62,14 @@ const About = () => {
             <Image className="rounded-2xl" src={AboutImage} alt="Who are we?" />
           </SimpleAnimation>
         </Grid>
-        <Grid className="py-6 lg:py-12 gap-8 ">
+        <Grid className="py-6 lg:py-12 gap-8">
           {cards.map((card) => (
             <div key={card.title} className="card col-span-4">
               <div className="cardContent">
-                <h2 className="cardTitle">{card.title}</h2>
+                <h2 className="cardTitle flex justify-center">{card.title}</h2>
+                <div className="text-white w-full flex justify-center py-2">
+                  {card.icon}
+                </div>
                 <p className="cardDescription">{card.description}</p>
               </div>
             </div>
