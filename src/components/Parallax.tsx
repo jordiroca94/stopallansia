@@ -10,6 +10,9 @@ import Countdown from "./Countdown";
 import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
+import KeyboardAnimation from "./animations/KeyboardAnimation";
+import SimpleAnimation from "./animations/SimpleAnimation";
+import TextAnimation from "./animations/TextAnimation";
 
 const Parallax = () => {
   return (
@@ -40,43 +43,52 @@ const Parallax = () => {
         <img className="size-96" src={Layer7.src} />
       </div>
       <div className="parallax__layer parallax__layer__7 flex justify-center items-center text-center">
-        <div className="flex flex-col mb-[35%] sm:mb-[15%] text-black">
-          <h1 className="text-xl md:text-6xl font-bold font-secondary">
-            STOP ALL ANSIA
-          </h1>
-          <h2 className="text-sm md:text-2xl font-bold py-2">
-            01.07 - 03.07.2025
-          </h2>
-          <h3 className="text-sm md:text-2xl font-bold uppercase">Mallorca</h3>
-        </div>
+        <TextAnimation>
+          <div className="flex flex-col mb-[35%] sm:mb-[15%] text-black">
+            <h1 className="text-xl md:text-6xl font-bold font-secondary">
+              STOP ALL ANSIA
+            </h1>
+            <h2 className="text-sm md:text-2xl font-bold py-2">
+              01.07 - 03.07.2025
+            </h2>
+            <h3 className="text-sm md:text-2xl font-bold uppercase">
+              Mallorca
+            </h3>
+          </div>
+        </TextAnimation>
       </div>
       <div className="parallax__cover">
         <div className="text-white flex justify-center items-center w-full flex-col h-screen gap-8">
-          <h3 className="text-3xl font-bold uppercase">Welcome back </h3>
-          <Countdown />
-          <h5 className="text-lg font-bold uppercase text-gray-300">
-            Private event
-          </h5>
+          <SimpleAnimation>
+            <h3 className="text-3xl font-bold uppercase">Welcome back </h3>
+          </SimpleAnimation>
+          <SimpleAnimation>
+            <Countdown />
+          </SimpleAnimation>
+          <SimpleAnimation>
+            <h5 className="text-lg font-bold uppercase text-gray-300">
+              Private event
+            </h5>
+          </SimpleAnimation>
           <div className="max-w-[350px] lg:max-w-[700px] text-lg flex flex-col gap-3 font-semibold w-full text-justify">
-            <p>
-              An experience that invites one to experience, grow and live in the
-              present with an open heart and mind.
-            </p>
-            <p>
-              Here, art breaks free from boundaries, fostering a sincere and
-              sustainable dialogue between different forms of expression
-            </p>
-            <p>
-              Stop all Ansia Festival is a creative retreat that unites nature,
-              people and art in a journey away from everyday anxiety.
-            </p>
+            <KeyboardAnimation
+              className="text-sm md:text-2xl font-bold"
+              text={[
+                "An experience that invites one to experience, grow and live in the present with an open heart and mind.",
+                "Here, art breaks free from boundaries, fostering a sincere and sustainable dialogue between different forms of expression",
+                "Stop all Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety.",
+              ]}
+              once
+            />
           </div>
-          <Link
-            href="/reserve"
-            className="font-extrabold text-lg uppercase border-white border-2 py-2 px-6 rounded-lg hover:bg-white hover:text-black"
-          >
-            Reserve your spot
-          </Link>
+          <SimpleAnimation className="mr-4">
+            <Link
+              href="/reserve"
+              className="font-extrabold text-lg uppercase border-white border-2 py-2 px-6 rounded-lg hover:bg-white hover:text-black"
+            >
+              Reserve your spot
+            </Link>
+          </SimpleAnimation>
         </div>
         <Footer />
       </div>
