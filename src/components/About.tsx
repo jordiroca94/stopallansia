@@ -3,35 +3,67 @@ import Container from "./ui/Container";
 import Image from "next/image";
 import AboutImage from "../../public/images/about.png";
 import Grid from "./ui/Grid";
-
+import SimpleAnimation from "./animations/SimpleAnimation";
+import TextAnimation from "./animations/TextAnimation";
+// swiperjs.com
 const About = () => {
+  const cards = [
+    {
+      title: "Location",
+      description:
+        "Far from everyday worries, surrounded by nature: this is where Stop all'Ansia happens. Info in Instagram DM.",
+    },
+    {
+      title: "Accomodation",
+      description:
+        "To stay, bring your own tent and camp in the designated area. Basic amenities are provided: restrooms are available.",
+    },
+    {
+      title: "Eat & Drink",
+      description:
+        "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site).You are also welcome to bring your own food.",
+    },
+  ];
+
   return (
-    <div className="h-screen pt-header">
+    <div className="pt-header">
       <Container>
         <Grid>
-          <h1 className="text-2xl lg:text-5xl font-semibold col-span-full font-secondary">
-            WHAT IS STOP ALL ANSIA
-          </h1>
-          <div className="col-span-4 lg:col-span-7 flex flex-col text-xl gap-3 font-medium text-justify">
-            <p>
-              An opportunity to embrace, grow, and fully immerse oneself in the
-              present moment with an open heart and mind.
-            </p>
-            <p>
-              This is a space where art transcends limitations, cultivating an
-              authentic and lasting exchange between diverse forms of
-              expression.
-            </p>
-            <p>
-              Stop all Ansia Festival is a creative retreat that unites nature,
-              people and art in a journey away from everyday anxiety.
-            </p>
+          <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
+            <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
+              WHAT IS STOP ALL ANSIA
+            </h1>
+          </SimpleAnimation>
+          <div className="col-span-4 lg:col-span-6 text-xl font-medium text-justify">
+            <TextAnimation className="flex flex-col gap-3">
+              <p>
+                An opportunity to embrace, grow, and fully immerse oneself in
+                the present moment with an open heart and mind.
+              </p>
+              <p>
+                This is a space where art transcends limitations, cultivating an
+                authentic and lasting exchange between diverse forms of
+                expression.
+              </p>
+              <p>
+                Stop all Ansia Festival is a creative retreat that unites
+                nature, people and art in a journey away from everyday anxiety.
+              </p>
+            </TextAnimation>
           </div>
-          <Image
-            className="lg:col-start-9 col-span-4 rounded-2xl"
-            src={AboutImage}
-            alt="Who are we?"
-          />
+          <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">
+            <Image className="rounded-2xl" src={AboutImage} alt="Who are we?" />
+          </SimpleAnimation>
+        </Grid>
+        <Grid className="py-6 lg:py-12 gap-8 ">
+          {cards.map((card) => (
+            <div key={card.title} className="card col-span-4">
+              <div className="cardContent">
+                <h2 className="cardTitle">{card.title}</h2>
+                <p className="cardDescription">{card.description}</p>
+              </div>
+            </div>
+          ))}
         </Grid>
       </Container>
     </div>

@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 
 export default function page() {
   return (
-    <main>
+    <main className="flex flex-col">
       <Header />
       <About />
       <Footer />

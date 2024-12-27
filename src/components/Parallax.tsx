@@ -70,18 +70,26 @@ const Parallax = () => {
               Private event
             </h5>
           </SimpleAnimation>
-          <div className="max-w-[350px] lg:max-w-[700px] text-lg flex flex-col gap-3 font-semibold w-full text-justify">
+          <div className="max-w-[350px] md:max-w-[690px] text-lg flex flex-col gap-3 font-semibold w-full text-justify">
             <KeyboardAnimation
-              className="text-sm md:text-2xl font-bold"
+              className="md:hidden text-xl font-bold text-center"
               text={[
-                "An experience that invites one to experience, grow and live in the present with an open heart and mind.",
-                "Here, art breaks free from boundaries, fostering a sincere and sustainable dialogue between different forms of expression",
+                "Stop all Ansia Festival is a creative",
+                "retreat that unites nature",
+                "people and art in a journey",
+                "away from everyday anxiety.",
+              ]}
+              once
+            />
+            <KeyboardAnimation
+              className="hidden md:block md:text-2xl font-bold"
+              text={[
                 "Stop all Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety.",
               ]}
               once
             />
           </div>
-          <SimpleAnimation className="mr-4">
+          <SimpleAnimation className="mt-8">
             <Link
               href="/reserve"
               className="font-extrabold text-lg uppercase border-white border-2 py-2 px-6 rounded-lg hover:bg-white hover:text-black"

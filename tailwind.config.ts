@@ -15,6 +15,7 @@ export default {
         header: "80px",
       },
       colors: {
+        gray: "#999999",
         red: "#FF2F3D",
         black: "#2d112b",
         cream: "#FEDCC8",
