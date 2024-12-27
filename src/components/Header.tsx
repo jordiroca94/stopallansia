@@ -26,16 +26,14 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
   return (
     <header
       className={`${
-        scrollPosition > 5 ? "bg-[#2d112b] text-white" : "text-black"
+        scrollPosition > 0 ? "bg-blackHeader/70 text-white" : "text-black"
       } ${
         parallax ? "absolute top-0" : "fixed"
       } z-50 flex justify-between items-center w-full py-5 px-10 bg-transparent`}
     >
       <Link
         href="/"
-        className={`font-bold text-2xl uppercase font-secondary text-black ${
-          scrollPosition > 5 ? "text-red" : "text-black"
-        }`}
+        className="font-bold text-2xl uppercase font-secondary text-black "
       >
         {Logo}
       </Link>

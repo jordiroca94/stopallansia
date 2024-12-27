@@ -18,6 +18,7 @@ export default {
         gray: "#999999",
         red: "#FF2F3D",
         black: "#2d112b",
+        blackHeader: "#181C14",
         cream: "#FEDCC8",
       },
     },
