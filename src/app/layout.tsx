@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stop all ansia",
+  title: "Stop all ansia 2025",
   description:
     "Stop all'Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety",
 };

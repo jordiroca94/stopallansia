@@ -49,7 +49,7 @@ const Parallax = () => {
               STOP ALL ANSIA
             </h1>
             <h2 className="text-sm md:text-2xl font-bold py-2">
-              01.07 - 03.07.2025
+              04.07 - 06.07.2025
             </h2>
             <h3 className="text-sm md:text-2xl font-bold uppercase">
               Mallorca
@@ -92,7 +92,7 @@ const Parallax = () => {
           <SimpleAnimation className="mt-8">
             <Link
               href="/reserve"
-              className="font-extrabold text-lg uppercase border-white border-2 py-2 px-6 rounded-lg hover:bg-white hover:text-black"
+              className="font-bold text-base uppercase border-white border py-3 px-6 rounded-lg hover:bg-white hover:text-black"
             >
               Reserve your spot
             </Link>
