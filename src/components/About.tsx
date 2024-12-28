@@ -41,7 +41,7 @@ const About = () => {
               WHAT IS STOP ALL ANSIA
             </h1>
           </SimpleAnimation>
-          <div className="col-span-4 lg:col-span-6 text-lg font-medium text-justify">
+          <div className="col-span-4 lg:col-span-6 text-base text-justify">
             <TextAnimation className="flex flex-col gap-3">
               <p>
                 An opportunity to embrace, grow, and fully immerse oneself in
