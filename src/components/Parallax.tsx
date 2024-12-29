@@ -44,7 +44,7 @@ const Parallax = () => {
       </div>
       <div className="parallax__layer parallax__layer__8 sm:hidden">
         <div className="flex justify-center">
-          <img className="size-64 -mb-[20%] " src={Layer7.src} />
+          <img className="size-64 -mb-[10%] " src={Layer7.src} />
         </div>
       </div>
       <div className="parallax__layer parallax__layer__7 flex justify-center items-center text-center">
@@ -75,7 +75,7 @@ const Parallax = () => {
               {t("PRIVATE")}
             </h5>
           </SimpleAnimation>
-          <div className="max-w-[350px]  text-lg flex flex-col gap-3 font-semibold w-full text-justify">
+          <div className="max-w-[350px] lg:max-w-none text-lg flex flex-col gap-3 font-semibold w-full text-justify">
             <KeyboardAnimation
               className="md:hidden text-xl font-bold text-center"
               text={[
