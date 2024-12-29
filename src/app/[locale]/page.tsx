@@ -1,8 +1,8 @@
-import Parallax from "@/components/Parallax";
+import Parallax from "@/components/parallax/Parallax";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="bg-black">
       <Parallax />
     </main>
   );

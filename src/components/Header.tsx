@@ -15,7 +15,7 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
     <header
       className={`${
         parallax ? "absolute top-0" : "fixed"
-      } z-50 flex justify-between items-center w-full py-5 px-10 bg-transparent`}
+      } z-50 flex justify-between items-center w-full py-5 px-5 lg:px-10 bg-transparent`}
     >
       <Link
         href="/"
