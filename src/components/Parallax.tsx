@@ -7,14 +7,17 @@ import Layer5 from "../../public/images/layer5.png";
 import Layer6 from "../../public/images/layer6.png";
 import Layer7 from "../../public/images/rocket.png";
 import Countdown from "./Countdown";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Header from "./Header";
 import Footer from "./Footer";
 import KeyboardAnimation from "./animations/KeyboardAnimation";
 import SimpleAnimation from "./animations/SimpleAnimation";
 import TextAnimation from "./animations/TextAnimation";
+import { useTranslations } from "next-intl";
 
 const Parallax = () => {
+  const t = useTranslations();
+
   return (
     <div className="parallax inset-0 absolute overflow-x-hidden overflow-y-auto h-screen ">
       <Header parallax />
@@ -40,7 +43,9 @@ const Parallax = () => {
         <img src={Layer6.src} />
       </div>
       <div className="parallax__layer parallax__layer__8 sm:hidden">
-        <img className="size-96" src={Layer7.src} />
+        <div className="flex justify-center">
+          <img className="size-64 -mb-[20%] " src={Layer7.src} />
+        </div>
       </div>
       <div className="parallax__layer parallax__layer__7 flex justify-center items-center text-center">
         <TextAnimation>
@@ -52,7 +57,7 @@ const Parallax = () => {
               04.07 - 06.07.2025
             </h2>
             <h3 className="text-sm md:text-2xl font-bold uppercase">
-              Mallorca
+              {t("MALLORCA")}
             </h3>
           </div>
         </TextAnimation>
@@ -60,32 +65,30 @@ const Parallax = () => {
       <div className="parallax__cover">
         <div className="text-white flex justify-center items-center w-full flex-col h-screen gap-8">
           <SimpleAnimation>
-            <h3 className="text-3xl font-bold uppercase">Welcome back </h3>
+            <h3 className="text-3xl font-bold uppercase"> {t("WELCOME")}</h3>
           </SimpleAnimation>
           <SimpleAnimation>
             <Countdown />
           </SimpleAnimation>
           <SimpleAnimation>
             <h5 className="text-lg font-bold uppercase text-gray-300">
-              Private event
+              {t("PRIVATE")}
             </h5>
           </SimpleAnimation>
-          <div className="max-w-[350px] md:max-w-[690px] text-lg flex flex-col gap-3 font-semibold w-full text-justify">
+          <div className="max-w-[350px]  text-lg flex flex-col gap-3 font-semibold w-full text-justify">
             <KeyboardAnimation
               className="md:hidden text-xl font-bold text-center"
               text={[
-                "Stop all Ansia Festival is a creative",
-                "retreat that unites nature",
-                "people and art in a journey",
-                "away from everyday anxiety.",
+                t("MOBILE_KEYBOARD_ANIMATION.1"),
+                t("MOBILE_KEYBOARD_ANIMATION.2"),
+                t("MOBILE_KEYBOARD_ANIMATION.3"),
+                t("MOBILE_KEYBOARD_ANIMATION.4"),
               ]}
               once
             />
             <KeyboardAnimation
-              className="hidden md:block md:text-2xl font-bold"
-              text={[
-                "Stop all Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety.",
-              ]}
+              className="hidden md:block md:text-2xl font-bold text-center"
+              text={[t("KEYBOARD_ANIMATION.1"), t("KEYBOARD_ANIMATION.2")]}
               once
             />
           </div>
@@ -94,7 +97,7 @@ const Parallax = () => {
               href="/reserve"
               className="font-bold text-base uppercase border-white border py-3 px-6 rounded-lg hover:bg-white hover:text-black"
             >
-              Reserve your spot
+              {t("RESERVE")}
             </Link>
           </SimpleAnimation>
         </div>

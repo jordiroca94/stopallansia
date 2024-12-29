@@ -1,0 +1,23 @@
+{
+  "ABOUT": "Nosotros",
+  "TICKETS": "Tickets",
+  "MALLORCA": "Mallorca",
+  "WELCOME": "Bienvenido",
+  "DAYS": "Días",
+  "HOURS": "Horas",
+  "MINUTES": "Minutos",
+  "SECONDS": "Segundos",
+  "PRIVATE": "Evento privado",
+  "RESERVE": "Reserva tu plaza",
+  "STAY_UPDATED": "Mantente actualizado con la información más reciente",
+  "KEYBOARD_ANIMATION": {
+    "1": "Stop All Ansia Festival es un retiro creativo que une la naturaleza,",
+    "2": "las personas y el arte en un viaje lejos de la ansiedad cotidiana."
+  },
+  "MOBILE_KEYBOARD_ANIMATION": {
+    "1": "Stop All Ansia Festival es un retiro creativo",
+    "2": "que une la naturaleza,",
+    "3": "las personas y el arte en un viaje",
+    "4": "lejos de la ansiedad cotidiana."
+  }
+}

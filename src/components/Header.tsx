@@ -1,11 +1,14 @@
-"use client";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Logo from "../icons/logo";
+import { useTranslations } from "next-intl";
+import LanguageSelector from "./LanguageSelector";
 
 const Header = ({ parallax }: { parallax?: boolean }) => {
-  const links = [
-    { link: "/about", label: "About" },
-    { link: "/reserve", label: "Tickets" },
+  const t = useTranslations();
+
+  const links: { link: "/about" | "/reserve"; label: string }[] = [
+    { link: "/about", label: t("ABOUT") },
+    { link: "/reserve", label: t("TICKETS") },
   ];
 
   return (
@@ -20,7 +23,7 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
       >
         {Logo}
       </Link>
-      <div className="flex gap-4">
+      <div className="flex items-center gap-4">
         {links.map(({ link, label }) => (
           <Link
             key={label}
@@ -30,6 +33,7 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
             {label}
           </Link>
         ))}
+        <LanguageSelector />
       </div>
     </header>
   );

@@ -1,0 +1,23 @@
+{
+  "ABOUT": "About",
+  "TICKETS": "Tickets",
+  "MALLORCA": "Mallorca",
+  "WELCOME": "Welcome back",
+  "DAYS": "Days",
+  "HOURS": "Hours",
+  "MINUTES": "Minutes",
+  "SECONDS": "Seconds",
+  "PRIVATE": "Private event",
+  "RESERVE": "Reserve your spot",
+  "STAY_UPDATED": "Stay updated on the latest info",
+  "KEYBOARD_ANIMATION": {
+    "1": "Stop all Ansia Festival is a creative retreat that unites nature,",
+    "2": "people and art in a journey away from everyday anxiety"
+  },
+  "MOBILE_KEYBOARD_ANIMATION": {
+    "1": "Stop all Ansia Festival is a creative",
+    "2": "retreat that unites nature",
+    "3": "people and art in a journey",
+    "4": "away from everyday anxiety."
+  }
+}

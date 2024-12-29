@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
 interface TimeLeft {
@@ -14,6 +15,8 @@ export default function Countdown({
 }: {
   targetDate?: string;
 }) {
+  const t = useTranslations();
+
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -55,21 +58,21 @@ export default function Countdown({
         <div className="flex gap-10">
           <div className="text-center">
             <div className="font-bold">{formatNumber(timeLeft.days)}</div>
-            <div className="text-base uppercase font-bold">Days</div>
+            <div className="text-base uppercase font-bold"> {t("DAYS")}</div>
           </div>
           <div className="text-center">
             <div className="font-bold">{formatNumber(timeLeft.hours)}</div>
-            <div className="text-base uppercase font-bold">Hours</div>
+            <div className="text-base uppercase font-bold"> {t("HOURS")}</div>
           </div>
         </div>
         <div className="flex gap-10">
           <div className="text-center">
             <div className="font-bold">{formatNumber(timeLeft.minutes)}</div>
-            <div className="text-base uppercase font-bold">Minutes</div>
+            <div className="text-base uppercase font-bold"> {t("MINUTES")}</div>
           </div>
           <div className="text-center">
             <div className="font-bold">{formatNumber(timeLeft.seconds)}</div>
-            <div className="text-base uppercase font-bold">Seconds</div>
+            <div className="text-base uppercase font-bold"> {t("SECONDS")}</div>
           </div>
         </div>
       </div>

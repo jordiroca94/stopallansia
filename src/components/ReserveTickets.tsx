@@ -2,7 +2,7 @@ import React from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import TextAnimation from "./animations/TextAnimation";
 
 const ReserveTickets = () => {
