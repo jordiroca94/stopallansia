@@ -6,8 +6,10 @@ export default function page() {
   return (
     <main className="flex flex-col">
       <Header />
-      <About />
-      <Footer />
+      <div className="min-h-screen flex flex-col justify-between">
+        <About />
+        <Footer />
+      </div>
     </main>
   );
 }

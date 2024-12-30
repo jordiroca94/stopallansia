@@ -3,6 +3,8 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Locale, routing } from "@/i18n/routing";
 import "../../styles/globals.css";
+import "../../../public/fonts/fonts.css";
+
 export default async function LocaleLayout({
   children,
   params,

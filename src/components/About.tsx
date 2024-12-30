@@ -70,7 +70,9 @@ const About = () => {
                 <div className="text-white w-full flex justify-center py-2">
                   {card.icon}
                 </div>
-                <p className="cardDescription">{card.description}</p>
+                <p className="cardDescription text-center">
+                  {card.description}
+                </p>
               </div>
             </div>
           ))}
