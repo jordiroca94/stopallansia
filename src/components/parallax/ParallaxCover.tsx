@@ -1,4 +1,4 @@
-import Countdown from "../Countdown";
+import Countdown from "./Countdown";
 import { Link } from "@/i18n/routing";
 import Footer from "../Footer";
 import KeyboardAnimation from "../animations/KeyboardAnimation";
