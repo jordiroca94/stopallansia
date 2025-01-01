@@ -38,39 +38,15 @@ body {
   }
 }
 
-.parallax__layer__0 {
-  transform: translateZ(-300px) scale(4);
-}
-
-.parallax__layer__1 {
-  transform: translateZ(-250px) scale(3.5);
-}
-
-.parallax__layer__2 {
-  transform: translateZ(-200px) scale(3);
-}
-
-.parallax__layer__3 {
-  transform: translateZ(-150px) scale(2.5);
-}
-
-.parallax__layer__4 {
-  transform: translateZ(-100px) scale(2);
-}
-
-.parallax__layer__5 {
-  transform: translateZ(-50px) scale(1.5);
-}
-
-.parallax__layer__6 {
+.parallax__layer__background {
   transform: translateZ(0px) scale(1);
 }
 
-.parallax__layer__7 {
+.parallax__layer__text {
   transform: translateZ(-400px) scale(5);
 }
 
-.parallax__layer__8 {
+.parallax__layer__rocket {
   transform: translateZ(100px) scale(0.5);
 }
 
