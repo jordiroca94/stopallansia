@@ -55,8 +55,6 @@ export default function LanguageSelector() {
     setSelectedLanguage(language);
     setIsOpen(false);
     router.replace({ pathname }, { locale: language.code as Locale });
-
-    console.log(`Language changed to ${language.code}`);
   };
 
   if (!selectedLanguage) return null;

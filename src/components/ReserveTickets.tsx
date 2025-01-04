@@ -1,11 +1,35 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
-import { Link } from "@/i18n/routing";
 import TextAnimation from "./animations/TextAnimation";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const ReserveTickets = () => {
+  const refReserveForm = useRef<HTMLFormElement>(null);
+
+  const reserveSchema = z.object({
+    option: z.string().min(1, { message: "Please select a pass option" }),
+  });
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      option: "",
+    },
+    resolver: zodResolver(reserveSchema),
+  });
+
+  const handleReserve = async (value: { option: string }) => {
+    alert(`You selected: ${value.option}`);
+  };
+
   return (
     <div className="pt-header">
       <Container>
@@ -25,43 +49,55 @@ const ReserveTickets = () => {
                 glamping tent
               </p>
             </SimpleAnimation>
-            <TextAnimation className="flex flex-col gap-2">
-              <div className="flex gap-3 items-start">
-                <div className="pt-0.5 sm:pt-0">
-                  <input type="radio" name="option" value="Option 1" />
-                </div>
-                <p>
-                  Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM [from
-                  X €]
-                </p>
-              </div>
-              <div className="flex gap-3 items-start">
-                <div className="pt-0.5 sm:pt-0">
-                  <input type="radio" name="option" value="Option 2" />
-                </div>
-                <p>
-                  One Day Pass (Friday) | From Fri 4th, 18 PM to Sat 5th, 12 PM
-                  [from X €]
-                </p>
-              </div>
-              <div className="flex gap-3 items-start">
-                <div className="pt-0.5 sm:pt-0">
-                  <input type="radio" name="option" value="Option 3" />
-                </div>
-                <p>
-                  One Day Pass (Friday) | From Fri 4th, 18 PM to Sat 5th, 12 PM
-                  [from X €]
-                </p>
-              </div>
-            </TextAnimation>
-            <SimpleAnimation>
-              <Link
-                href="/reserve-tickets"
-                className="sm:w-fit my-4 lg:mt-10 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
+            <form ref={refReserveForm} onSubmit={handleSubmit(handleReserve)}>
+              <TextAnimation className="flex flex-col gap-1 relative pb-10">
+                <label className="flex gap-3 items-center">
+                  <input
+                    type="radio"
+                    {...register("option")}
+                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                  />
+                  <span>
+                    Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
+                    [from X €]
+                  </span>
+                </label>
+                <label className="flex gap-3 items-center">
+                  <input
+                    type="radio"
+                    {...register("option")}
+                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                  />
+                  <span>
+                    Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
+                    [from X €]
+                  </span>
+                </label>
+                <label className="flex gap-3 items-center">
+                  <input
+                    type="radio"
+                    {...register("option")}
+                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                  />
+                  <span>
+                    Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
+                    [from X €]
+                  </span>
+                </label>
+                {errors.option && (
+                  <p className="text-red absolute bottom-2">
+                    {errors.option.message}
+                  </p>
+                )}
+              </TextAnimation>
+
+              <button
+                type="submit"
+                className="sm:w-fit my-4 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
               >
-                Continue
-              </Link>
-            </SimpleAnimation>
+                Submit
+              </button>
+            </form>
           </div>
         </Grid>
       </Container>
