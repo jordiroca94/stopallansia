@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
@@ -7,18 +7,28 @@ import TextAnimation from "./animations/TextAnimation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import Checkout from "./Checkout";
 
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+  throw new Error("Stripe public key is not defined");
+}
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const ReserveTickets = () => {
+  const [amount, setAmount] = useState<number | null>(null);
   const refReserveForm = useRef<HTMLFormElement>(null);
 
   const reserveSchema = z.object({
-    option: z.string().min(1, { message: "Please select a pass option" }),
+    option: z.string().nonempty("Please select an option"),
   });
-
   const {
     handleSubmit,
     register,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       option: "",
@@ -26,13 +36,44 @@ const ReserveTickets = () => {
     resolver: zodResolver(reserveSchema),
   });
 
+  const watchedOption = watch("option");
+
+  useEffect(() => {
+    if (watchedOption) {
+      handleReserve({ option: watchedOption });
+    }
+  }, [watchedOption]);
+
   const handleReserve = async (value: { option: string }) => {
-    alert(`You selected: ${value.option}`);
+    let pass = { type: "", price: 0 };
+    switch (value.option) {
+      case "full-pass":
+        pass = {
+          type: "full-pass",
+          price: 80,
+        };
+        break;
+      case "friday-pass":
+        pass = {
+          type: "friday-pass",
+          price: 50,
+        };
+        break;
+      case "saturday-pass":
+        pass = {
+          type: "saturday-pass",
+          price: 50,
+        };
+        break;
+      default:
+        break;
+    }
+    setAmount(pass.price);
   };
 
   return (
     <div className="pt-header">
-      <Container>
+      <Container className="pb-10">
         <Grid className="py-6 lg:py-12">
           <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
             <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
@@ -49,39 +90,39 @@ const ReserveTickets = () => {
                 glamping tent
               </p>
             </SimpleAnimation>
-            <form ref={refReserveForm} onSubmit={handleSubmit(handleReserve)}>
+            <form ref={refReserveForm}>
               <TextAnimation className="flex flex-col gap-1 relative pb-10">
                 <label className="flex gap-3 items-center">
                   <input
                     type="radio"
                     {...register("option")}
-                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                    value="full-pass"
                   />
                   <span>
                     Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
-                    [from X €]
+                    [from 80 €]
                   </span>
                 </label>
                 <label className="flex gap-3 items-center">
                   <input
                     type="radio"
                     {...register("option")}
-                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                    value="friday-pass"
                   />
                   <span>
-                    Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
-                    [from X €]
+                    Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM
+                    [from 50 €]
                   </span>
                 </label>
                 <label className="flex gap-3 items-center">
                   <input
                     type="radio"
                     {...register("option")}
-                    value="Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM"
+                    value="saturday-pass"
                   />
                   <span>
-                    Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM
-                    [from X €]
+                    Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM
+                    [from 50 €]
                   </span>
                 </label>
                 {errors.option && (
@@ -90,14 +131,25 @@ const ReserveTickets = () => {
                   </p>
                 )}
               </TextAnimation>
-
-              <button
+              {/* <button
                 type="submit"
-                className="sm:w-fit my-4 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
+                className="w-full sm:w-fit my-3 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
               >
                 Submit
-              </button>
+              </button> */}
             </form>
+            {amount !== null && (
+              <Elements
+                stripe={stripePromise}
+                options={{
+                  mode: "payment",
+                  amount: convertToSubcurrency(amount),
+                  currency: "eur",
+                }}
+              >
+                <Checkout amount={amount} />
+              </Elements>
+            )}
           </div>
         </Grid>
       </Container>
