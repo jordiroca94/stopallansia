@@ -25,7 +25,6 @@ const ReserveTickets = () => {
     option: z.string().nonempty("Please select an option"),
   });
   const {
-    handleSubmit,
     register,
     formState: { errors },
     watch,
@@ -147,7 +146,7 @@ const ReserveTickets = () => {
                   currency: "eur",
                 }}
               >
-                <Checkout amount={amount} />
+                <Checkout amount={amount} email={"jordiroca@gmail.com"} />
               </Elements>
             )}
           </div>

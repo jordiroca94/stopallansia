@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
       amount: amount,
       currency: "eur",
       automatic_payment_methods: { enabled: true },
+      receipt_email: "jordiroc22a@gmail.com",
     });
 
     return NextResponse.json({ clientSecret: paymentIntent.client_secret });

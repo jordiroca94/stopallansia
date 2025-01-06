@@ -7,13 +7,15 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import { useLocale } from "next-intl";
 
-const Checkout = ({ amount }: { amount: number }) => {
+const Checkout = ({ amount, email }: { amount: number; email: string }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
+  const locale = useLocale();
 
   useEffect(() => {
     fetch("/api/create-payment-intent", {
@@ -21,7 +23,10 @@ const Checkout = ({ amount }: { amount: number }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: convertToSubcurrency(amount) }),
+      body: JSON.stringify({
+        amount: convertToSubcurrency(amount),
+        email: email,
+      }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -47,7 +52,8 @@ const Checkout = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `https://stop-all-ansia.vercel.app//${locale}/payment-success`,
+        // return_url: `http://localhost:3000/${locale}/payment-success`,
       },
     });
 
@@ -65,7 +71,7 @@ const Checkout = ({ amount }: { amount: number }) => {
 
   if (!clientSecret || !stripe || !elements) {
     return (
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center w-full md:w-[600px]">
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
           role="status"

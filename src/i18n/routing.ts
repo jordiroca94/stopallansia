@@ -28,6 +28,11 @@ export const routing = defineRouting({
       es: "/reservar-tickets",
       it: "/riservare-tickets",
     },
+    "/payment-success": {
+      en: "/payment-success",
+      es: "/pago-realizado",
+      it: "/pagamento-riuscito",
+    },
   },
 });
 
