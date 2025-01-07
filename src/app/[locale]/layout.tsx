@@ -4,6 +4,12 @@ import { notFound } from "next/navigation";
 import { Locale, routing } from "@/i18n/routing";
 import "../../styles/globals.css";
 import "../../../public/fonts/fonts.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Stop All Ansia",
+  description: "Stop All Ansia MF",
+};
 
 export default async function LocaleLayout({
   children,
