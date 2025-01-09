@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Container from "./ui/Container";
-import Grid from "./ui/Grid";
-import SimpleAnimation from "./animations/SimpleAnimation";
-import TextAnimation from "./animations/TextAnimation";
+import Container from "../ui/Container";
+import Grid from "../ui/Grid";
+import SimpleAnimation from "../animations/SimpleAnimation";
+import TextAnimation from "../animations/TextAnimation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
