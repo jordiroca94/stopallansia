@@ -12,7 +12,7 @@ import { useLocale } from "next-intl";
 const Checkout = ({ amount, email }: { amount: number; email: string }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [errorMessage, setErrorMessage] = useState<string>();
+  // const [errorMessage, setErrorMessage] = useState<string>();
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
   const locale = useLocale();
@@ -43,7 +43,7 @@ const Checkout = ({ amount, email }: { amount: number; email: string }) => {
     const { error: submitError } = await elements.submit();
 
     if (submitError) {
-      setErrorMessage(submitError.message);
+      // setErrorMessage(submitError.message);
       setLoading(false);
       return;
     }
@@ -60,7 +60,7 @@ const Checkout = ({ amount, email }: { amount: number; email: string }) => {
     if (error) {
       // This point is only reached if there's an immediate error when
       // confirming the payment. Show the error to your customer (for example, payment details incomplete)
-      setErrorMessage(error.message);
+      // setErrorMessage(error.message);
     } else {
       // The payment UI automatically closes with a success animation.
       // Your customer is redirected to your `return_url`.
@@ -91,9 +91,7 @@ const Checkout = ({ amount, email }: { amount: number; email: string }) => {
         className="p-2 rounded-md w-full md:w-[600px]"
       >
         {clientSecret && <PaymentElement />}
-
-        {errorMessage && <div>{errorMessage}</div>}
-
+        {/* {errorMessage && <div>{errorMessage}</div>} */}
         <button
           disabled={!stripe || loading}
           className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
