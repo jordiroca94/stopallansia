@@ -24,6 +24,7 @@ const ReserveTickets = () => {
   const reserveSchema = z.object({
     option: z.string().nonempty("Please select an option"),
   });
+
   const {
     register,
     formState: { errors },
@@ -130,12 +131,6 @@ const ReserveTickets = () => {
                   </p>
                 )}
               </TextAnimation>
-              {/* <button
-                type="submit"
-                className="w-full sm:w-fit my-3 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
-              >
-                Submit
-              </button> */}
             </form>
             {amount !== null && (
               <Elements
@@ -146,7 +141,7 @@ const ReserveTickets = () => {
                   currency: "eur",
                 }}
               >
-                <Checkout amount={amount} email={"jordiroca@gmail.com"} />
+                <Checkout amount={amount} />
               </Elements>
             )}
           </div>
