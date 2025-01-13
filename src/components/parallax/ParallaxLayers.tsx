@@ -11,11 +11,15 @@ const ParallaxLayers = () => {
   return (
     <>
       <div className="parallax__layer parallax__layer__background">
-        <img src={BackgroundLayer.src} />
+        <img src={BackgroundLayer.src} alt="Background layer" />
       </div>
       <div className="parallax__layer parallax__layer__rocket sm:hidden">
         <div className="flex justify-center">
-          <img className="size-64 -mb-[10%] " src={RocketLayer.src} />
+          <img
+            className="size-64 -mb-[10%] "
+            src={RocketLayer.src}
+            alt="Rocket"
+          />
         </div>
       </div>
       <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center">

@@ -4,7 +4,8 @@ import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
 import { Link } from "@/i18n/routing";
 import TextAnimation from "./animations/TextAnimation";
-
+import Image from "next/image";
+import Reserveimage from "../../public/images/reserve.png";
 const Reserve = () => {
   return (
     <div className="pt-header">
@@ -63,9 +64,11 @@ const Reserve = () => {
             </SimpleAnimation>
           </div>
           <SimpleAnimation className="col-span-4 lg:col-start-9">
-            <div className="aspect-[5/6] bg-black text-white flex items-center justify-center rounded-2xl">
-              PICTURE HERE
-            </div>
+            <Image
+              className="aspect-[5/6] rounded-2xl"
+              src={Reserveimage}
+              alt="Reserve your spot"
+            />
           </SimpleAnimation>
         </Grid>
       </Container>
