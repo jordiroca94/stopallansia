@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useStripe,
   useElements,
   PaymentElement,
+  LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { useLocale } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import SimpleAnimation from "../animations/SimpleAnimation";
 
 const Checkout = ({ amount }: { amount: number }) => {
@@ -20,12 +18,6 @@ const Checkout = ({ amount }: { amount: number }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
   const locale = useLocale();
-  const refPayForm = useRef<HTMLFormElement>(null);
-
-  const paySchema = z.object({
-    name: z.string().min(2, { message: "Please enter a valid name" }),
-    email: z.string().email({ message: "Please enter a valid email" }),
-  });
 
   useEffect(() => {
     fetch("/api/create-payment-intent", {
@@ -40,18 +32,6 @@ const Checkout = ({ amount }: { amount: number }) => {
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [amount]);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-    },
-    resolver: zodResolver(paySchema),
-  });
 
   const handlePayment = async () => {
     setLoading(true);
@@ -72,8 +52,8 @@ const Checkout = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `https://stop-all-ansia.vercel.app//${locale}/payment-success`,
-        // return_url: `http://localhost:3000/${locale}/payment-success`,
+        // return_url: `https://stop-all-ansia.vercel.app//${locale}/payment-success`,
+        return_url: `http://localhost:3000/${locale}/payment-success`,
       },
     });
 
@@ -106,57 +86,24 @@ const Checkout = ({ amount }: { amount: number }) => {
 
   return (
     <div className="w-full flex justify-start">
-      <form
-        ref={refPayForm}
-        onSubmit={handleSubmit(handlePayment)}
-        className="p-2 rounded-md w-full md:w-[600px]"
-      >
+      <div className="p-2 rounded-md w-full md:w-[600px]">
         <SimpleAnimation>
           <h3 className="text-xl lg:text-2xl font-light pb-4">Your details</h3>
         </SimpleAnimation>
-        <div className="max-w-[400px] pb-4 flex flex-col gap-2">
-          <label htmlFor="name" className="font-medium">
-            Full name *
-          </label>
-          <input
-            className="border border-secondary focus:ring-1 focus:ring-secondary py-2 px-6 rounded-md text-black w-full"
-            placeholder="Full name"
-            type="text"
-            id="name"
-            {...register("name")}
-          />
-          {errors.name?.message && (
-            <p aria-describedby="name" className="text-red pt-1">
-              {errors.name?.message}
-            </p>
-          )}
-        </div>
-        <div className="max-w-[400px] pb-4 flex flex-col gap-2">
-          <label htmlFor="email" className="font-medium">
-            Email *
-          </label>
-          <input
-            className="border border-secondary focus:ring-1 focus:ring-secondary py-2 px-6 rounded-md text-black w-full"
-            placeholder="Email"
-            type="email"
-            id="email"
-            {...register("email")}
-          />
-          {errors.email?.message && (
-            <p aria-describedby="email" className="text-red pt-1">
-              {errors.email?.message}
-            </p>
-          )}
-        </div>
-        {clientSecret && <PaymentElement />}
+        {clientSecret && (
+          <>
+            <LinkAuthenticationElement className="mb-4" />
+            <PaymentElement />
+          </>
+        )}
         <button
-          type="submit"
+          onClick={handlePayment}
           disabled={!stripe || loading}
           className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
         >
           {!loading ? `Pay $${amount}` : "Processing..."}
         </button>
-      </form>
+      </div>
     </div>
   );
 };
