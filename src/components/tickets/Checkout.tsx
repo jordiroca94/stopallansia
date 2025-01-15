@@ -14,7 +14,7 @@ import SimpleAnimation from "../animations/SimpleAnimation";
 const Checkout = ({ amount }: { amount: number }) => {
   const stripe = useStripe();
   const elements = useElements();
-  // const [errorMessage, setErrorMessage] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>();
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
   const locale = useLocale();
@@ -43,7 +43,7 @@ const Checkout = ({ amount }: { amount: number }) => {
     const { error: submitError } = await elements.submit();
 
     if (submitError) {
-      // setErrorMessage(submitError.message);
+      setErrorMessage(submitError.message);
       setLoading(false);
       return;
     }
@@ -58,12 +58,7 @@ const Checkout = ({ amount }: { amount: number }) => {
     });
 
     if (error) {
-      // This point is only reached if there's an immediate error when
-      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
-      // setErrorMessage(error.message);
-    } else {
-      // The payment UI automatically closes with a success animation.
-      // Your customer is redirected to your `return_url`.
+      setErrorMessage(error.message);
     }
 
     setLoading(false);
@@ -94,6 +89,9 @@ const Checkout = ({ amount }: { amount: number }) => {
           <>
             <LinkAuthenticationElement className="mb-4" />
             <PaymentElement />
+            {errorMessage && (
+              <div className="text-red text-sm mt-2">{errorMessage}</div>
+            )}
           </>
         )}
         <button
