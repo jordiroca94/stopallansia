@@ -53,7 +53,6 @@ const Checkout = ({ amount }: { amount: number }) => {
       clientSecret,
       confirmParams: {
         return_url: `${process.env.NEXT_PUBLIC_API_URL}/${locale}/payment-success`,
-        // return_url: `http://localhost:3000/${locale}/payment-success`,
       },
     });
 
