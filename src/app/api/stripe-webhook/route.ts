@@ -25,27 +25,9 @@ export async function POST(req: NextRequest) {
     return new NextResponse(`Webhook Error: ${err}`, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
-
-    // Option 1: Using customer_email
-    if (session.customer_email) {
-      console.log("Customer Email (customer_email):", session.customer_email);
-    }
-
-    // Option 2: Using customer_details.email
-    if (session.customer_details && session.customer_details.email) {
-      console.log(
-        "Customer Email (customer_details.email):",
-        session.customer_details.email
-      );
-    }
-  }
-
   // Log the event type and object for debugging purposes
   console.log("✅ Success: Event received", event.type);
-  console.log(event.data.object, "<---- Event data object here");
-  console.log(event, "<---- Event raw info");
+  console.log(event.data.object);
 
   // Here you can add additional event handling logic based on event.type
   // For example, if (event.type === 'payment_intent.succeeded') { ... }
