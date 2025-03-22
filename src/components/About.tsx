@@ -9,7 +9,6 @@ import { CiLocationOn } from "react-icons/ci";
 import { RiTentLine } from "react-icons/ri";
 import { IoFastFoodOutline } from "react-icons/io5";
 
-// swiperjs.com
 const About = () => {
   const cards = [
     {
@@ -59,14 +58,14 @@ const About = () => {
             </TextAnimation>
           </div>
           <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">
-            <Image className="rounded-2xl" src={AboutImage} alt="Who are we?" />
+            <Image className="rounded-md" src={AboutImage} alt="Who are we?" />
           </SimpleAnimation>
         </Grid>
         <Grid className="py-6 lg:py-12 gap-8">
           {cards.map((card) => (
             <div key={card.title} className="card col-span-4">
               <div className="cardContent">
-                <h2 className="cardTitle flex justify-center">{card.title}</h2>
+                <h2 className="cardTitle flex justify-center ">{card.title}</h2>
                 <div className="text-white w-full flex justify-center py-2">
                   {card.icon}
                 </div>

@@ -57,7 +57,7 @@ const Reserve = () => {
             <SimpleAnimation>
               <Link
                 href="/reserve-tickets"
-                className="sm:w-fit my-4 lg:mt-10 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-lg hover:bg-black hover:text-white"
+                className="sm:w-fit my-4 lg:mt-10 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-md hover:bg-black hover:text-white"
               >
                 Reserve your spot
               </Link>
@@ -65,7 +65,7 @@ const Reserve = () => {
           </div>
           <SimpleAnimation className="col-span-4 lg:col-start-9">
             <Image
-              className="aspect-[5/6] rounded-2xl"
+              className="aspect-[5/6] rounded-md"
               src={Reserveimage}
               alt="Reserve your spot"
             />

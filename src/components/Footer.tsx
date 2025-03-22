@@ -7,9 +7,10 @@ const Footer = () => {
   const t = useTranslations();
 
   return (
-    <footer className="flex justify-center items-center p-10 border-t border-cream bg-black text-white">
+    <footer className="flex justify-center items-center p-10 border-t border-white bg-black text-white">
       <div className="flex flex-col justify-center items-center gap-4">
         <a
+          target="_blank"
           className="flex flex-col gap-2 items-center"
           href="https://www.instagram.com/stop.all.ansia/"
         >

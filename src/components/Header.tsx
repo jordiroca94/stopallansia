@@ -6,9 +6,10 @@ import LanguageSelector from "./LanguageSelector";
 const Header = ({ parallax }: { parallax?: boolean }) => {
   const t = useTranslations();
 
-  const links: { link: "/about" | "/reserve"; label: string }[] = [
+  const links: { link: "/about" | "/reserve" | "/artists"; label: string }[] = [
     { link: "/about", label: t("ABOUT") },
     { link: "/reserve", label: t("TICKETS") },
+    { link: "/artists", label: t("ARTISTS") },
   ];
 
   return (

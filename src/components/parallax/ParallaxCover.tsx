@@ -22,6 +22,7 @@ const ParallaxCover = () => {
             {t("PRIVATE")}
           </h5>
         </SimpleAnimation>
+
         <div className="max-w-[350px] lg:max-w-none text-lg flex flex-col gap-3 font-semibold w-full text-justify">
           <KeyboardAnimation
             className="md:hidden text-xl font-bold text-center"
@@ -42,7 +43,7 @@ const ParallaxCover = () => {
         <SimpleAnimation className="mt-8">
           <Link
             href="/reserve"
-            className="font-bold text-base uppercase border-white border py-3 px-6 rounded-lg hover:bg-white hover:text-black"
+            className="font-bold text-base uppercase border-white border py-3 px-6 rounded-md hover:bg-white hover:text-black"
           >
             {t("RESERVE")}
           </Link>

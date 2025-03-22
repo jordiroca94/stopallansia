@@ -4,7 +4,7 @@ import ParallaxCover from "./ParallaxCover";
 
 const Parallax = () => {
   return (
-    <div className="bg-cream parallax inset-0 absolute overflow-x-hidden overflow-y-auto h-screen">
+    <div className="bg-white parallax inset-0 absolute overflow-x-hidden overflow-y-auto h-screen">
       <Header parallax />
       <ParallaxLayers />
       <ParallaxCover />
