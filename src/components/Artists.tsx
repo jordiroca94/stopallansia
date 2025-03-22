@@ -121,32 +121,30 @@ const Artists = () => {
   ];
 
   return (
-    <div className="pt-header">
-      <Container>
-        <Grid>
-          <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
-            <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-              Last year edition
-            </h1>
-          </SimpleAnimation>
-        </Grid>
-        <Grid className="py-10">
-          {cards.map((card) => (
-            <div
-              key={card.name}
-              className="col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
-            >
-              <Image src={card.image} alt={card.name} />
-              <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-black bg-opacity-40">
-                <h5 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-5 text-center ">
-                  {card.description}
-                </h5>
-              </div>
+    <Container>
+      <Grid>
+        <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
+          <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
+            Last year edition
+          </h1>
+        </SimpleAnimation>
+      </Grid>
+      <Grid className="py-10">
+        {cards.map((card) => (
+          <div
+            key={card.name}
+            className="col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
+          >
+            <Image src={card.image} alt={card.name} />
+            <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-black bg-opacity-40">
+              <h5 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-5 text-center ">
+                {card.description}
+              </h5>
             </div>
-          ))}
-        </Grid>
-      </Container>
-    </div>
+          </div>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 

@@ -15,7 +15,7 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
   return (
     <header
       className={`${
-        parallax ? "absolute top-0" : "fixed"
+        parallax ? "absolute top-0" : ""
       } z-50 flex justify-between items-center w-full py-5 px-5 lg:px-10 bg-transparent`}
     >
       <Link
@@ -24,12 +24,12 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
       >
         {Logo}
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 lg:gap-4">
         {links.map(({ link, label }) => (
           <Link
             key={label}
             href={link}
-            className="font-extrabold text-lg uppercase underlineAfterHover"
+            className="font-extrabold text-sm lg:text-lg uppercase underlineAfterHover"
           >
             {label}
           </Link>

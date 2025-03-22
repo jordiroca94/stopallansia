@@ -11,9 +11,6 @@ export default {
       secondary: "Kelsi, sans-serif",
     },
     extend: {
-      padding: {
-        header: "80px",
-      },
       colors: {
         gray: "#999999",
         red: "#FF2F3D",

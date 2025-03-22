@@ -32,52 +32,48 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-header">
-      <Container>
-        <Grid>
-          <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
-            <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-              WHAT IS STOP ALL ANSIA
-            </h1>
-          </SimpleAnimation>
-          <div className="col-span-4 lg:col-span-6 text-base text-justify">
-            <TextAnimation className="flex flex-col gap-3">
-              <p>
-                An opportunity to embrace, grow, and fully immerse oneself in
-                the present moment with an open heart and mind.
-              </p>
-              <p>
-                This is a space where art transcends limitations, cultivating an
-                authentic and lasting exchange between diverse forms of
-                expression.
-              </p>
-              <p>
-                Stop all Ansia Festival is a creative retreat that unites
-                nature, people and art in a journey away from everyday anxiety.
-              </p>
-            </TextAnimation>
-          </div>
-          <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">
-            <Image className="rounded-md" src={AboutImage} alt="Who are we?" />
-          </SimpleAnimation>
-        </Grid>
-        <Grid className="py-6 lg:py-12 gap-8">
-          {cards.map((card) => (
-            <div key={card.title} className="card col-span-4">
-              <div className="cardContent">
-                <h2 className="cardTitle flex justify-center ">{card.title}</h2>
-                <div className="text-white w-full flex justify-center py-2">
-                  {card.icon}
-                </div>
-                <p className="cardDescription text-center">
-                  {card.description}
-                </p>
+    <Container>
+      <Grid>
+        <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
+          <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
+            WHAT IS STOP ALL ANSIA
+          </h1>
+        </SimpleAnimation>
+        <div className="col-span-4 lg:col-span-6 text-base text-justify">
+          <TextAnimation className="flex flex-col gap-3">
+            <p>
+              An opportunity to embrace, grow, and fully immerse oneself in the
+              present moment with an open heart and mind.
+            </p>
+            <p>
+              This is a space where art transcends limitations, cultivating an
+              authentic and lasting exchange between diverse forms of
+              expression.
+            </p>
+            <p>
+              Stop all Ansia Festival is a creative retreat that unites nature,
+              people and art in a journey away from everyday anxiety.
+            </p>
+          </TextAnimation>
+        </div>
+        <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">
+          <Image className="rounded-md" src={AboutImage} alt="Who are we?" />
+        </SimpleAnimation>
+      </Grid>
+      <Grid className="py-6 lg:py-12 gap-8">
+        {cards.map((card) => (
+          <div key={card.title} className="card col-span-4">
+            <div className="cardContent">
+              <h2 className="cardTitle flex justify-center ">{card.title}</h2>
+              <div className="text-white w-full flex justify-center py-2">
+                {card.icon}
               </div>
+              <p className="cardDescription text-center">{card.description}</p>
             </div>
-          ))}
-        </Grid>
-      </Container>
-    </div>
+          </div>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
