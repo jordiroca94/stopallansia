@@ -22,13 +22,13 @@ import TechnoKoffie from "../../public/images/lineup/techno-koffie.png";
 import Veezo from "../../public/images/lineup/veezo.png";
 
 const Artists = () => {
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState<string | null>(null);
 
   const cards = [
     {
       name: "b-lions",
       description:
-        "Born and raised in Greece, DJ B-Líons brings over 15 years of musical experience to the decks. With a rich background in music, including Spanish guitar and trumpet, he began DJing over a decade ago at local events in northern Greece. What started as a side project quickly grew into a passion, leading him to develop his craft further in the vibrant music scene of Barcelona.",
+        "Born and raised in Greece, DJ B-Líons brings over 15 years of musical experience to the decks. With a rich background in music, including Spanish guitar and trumpet, he began DJing over a decade ago at local events in northern Greece.",
       image: Blions,
     },
     {
@@ -46,31 +46,31 @@ const Artists = () => {
     {
       name: "dimarziio",
       description:
-        "Dimarziio is an Argentine DJ and producer, now based in Barcelona since 2023. Passionate about music from an early age, he has been dedicated to electronic music since 2019. His sound blends genres like progressive house, with influences from the ‘90s and ‘00s, electro, acid house, and indie dance. His goal is to introduce fresh sounds to the audience, maintaining fluidity on the dance floor.",
+        "Dimarziio is an Argentine DJ and producer, now based in Barcelona since 2023. Passionate about music from an early age, he has been dedicated to electronic music since 2019. His sound blends genres like progressive house, with influences from the ‘90s and ‘00s, electro, acid house, and indie dance.",
       image: Dimarziio,
     },
     {
       name: "flip-flop",
       description:
-        "From the basketball court to the ping pong table, and now also on the decks—DJ Flip (aka DJ Crocs - any pun about the name intended of course) & DJ Flop (aka DJ Woody Chocolich) are bringing that same teamwork to the B2B set. These two maestros are set to deliver an hour and a half of seamless transitions and nonstop vibes, creating an electrifying atmosphere that will keep you moving from start to finish.",
+        "From the basketball court to the ping pong table, and now also on the decks—DJ Flip (aka DJ Crocs - any pun about the name intended of course) & DJ Flop (aka DJ Woody Chocolich) are bringing that same teamwork to the B2B set.",
       image: FlipFlop,
     },
     {
       name: "franco-forte",
       description:
-        "His journey with music began in Turin in his teenage years, alongside an early passion for writing, initially in a raw, poetic form, which later evolved into fully crafted song lyrics. In 2019, he released his first single, 6990, officially launching the FRANCO FORTE project. His songs often explore the struggles he faces in life, the feeling of never being quite capable, and always being a step or two behind the world around him.",
+        "His journey with music began in Turin in his teenage years, alongside an early passion for writing, initially in a raw, poetic form, which later evolved into fully crafted song lyrics. In 2019, he released his first single, 6990, officially launching the FRANCO FORTE project.",
       image: FrancoForte,
     },
     {
       name: "garage-bagarre",
       description:
-        "Garage Bagarre’s music is an electrifying blend of ‘60s garage rock, surf, blues, and psychedelia. Hailing from the heart of Turin, this band channels raw energy into every performance, fusing gritty rhythms and vibrant sounds. They’re here to make you dance, scream, and sweat, with a sound that promises to keep the adrenaline high and the crowd moving from start to finish.",
+        "Garage Bagarre’s music is an electrifying blend of ‘60s garage rock, surf, blues, and psychedelia. Hailing from the heart of Turin, this band channels raw energy into every performance, fusing gritty rhythms and vibrant sounds.",
       image: GarageBagarre,
     },
     {
       name: "inerba",
       description:
-        "INERBA is a project that came to life two years ago in Torino. It’s blending rock, funk, and pop into an electrifying sound, where the powerful vocals of the lead singer take center stage, adding depth and emotion to every track. Their debut EP, released in July 2024, introduced listeners to their unique style, and now the band is set to return to the studio this October to create their eagerly awaited second EP.",
+        "INERBA is a project that came to life two years ago in Torino. It’s blending rock, funk, and pop into an electrifying sound, where the powerful vocals of the lead singer take center stage, adding depth and emotion to every track.",
       image: Inerba,
     },
     {
@@ -82,7 +82,7 @@ const Artists = () => {
     {
       name: "kaiser",
       description:
-        "Kaiser is born with a strong inclination for hip-hop culture and rap. Later, he pushed the boundaries and tried to find samples and influences. This love, made him became a true connoisseurs of black music culture. His favourite words are “people contamination”. Thanks to him, you will hear all in vynil, few genre from disco funk to soul sounds.",
+        "Kaiser is born with a strong inclination for hip-hop culture and rap. Later, he pushed the boundaries and tried to find samples and influences. This love, made him became a true connoisseurs of black music culture. His favourite words are “people contamination”.",
       image: Kaiser,
     },
     {
@@ -94,7 +94,7 @@ const Artists = () => {
     {
       name: "perez",
       description:
-        "An incurable groove seeker, initially a habitué of the noblest Milanese clubbing scene, he naturally switched to the other side of the console, thanks to a rich background in house, disco, funk, soul and African music. For about 3 years he has been collecting and selecting records, with black music at the center of his aesthetic, which reaches afro disco, kwaito and tropical house panoramas to the grooviest shores of brazilian jazz.",
+        "An incurable groove seeker, initially a habitué of the noblest Milanese clubbing scene, he naturally switched to the other side of the console, thanks to a rich background in house, disco, funk, soul and African music.",
       image: Perez,
     },
     {
@@ -112,13 +112,13 @@ const Artists = () => {
     {
       name: "techno-koffie",
       description:
-        "Techno Koffie is a collective of three: Federico, Guido and Jacopo. It started by adding a techno twist to the italian ritual of drinking coffee with friends during the dull Sunday afternoons. Techno Koffie is now a recognisable name among the techno lovers in the Netherlands. Our resident djs and new talents never miss to provide good vibes, thanks to a recognisable  groove ranging from melodic, trance, acid and hard techno.",
+        "Techno Koffie is a collective of three: Federico, Guido and Jacopo. It started by adding a techno twist to the italian ritual of drinking coffee with friends during the dull Sunday afternoons. Techno Koffie is now a recognisable name among the techno lovers in the Netherlands.",
       image: TechnoKoffie,
     },
     {
       name: "veezo",
       description:
-        "Veezo is a pianist and producer rooted in jazz. Raised with hiphop and in love with electronica, he draws inspiration from artists such as Ahmad Jamal, Fela Kuti and Piero Umiliani. He boasts numerous collaborations, most outstanding those with Tullio De Piscopo, Bassi Maestro, Guè, Jaxx Madicine, Turbojazz, Frah Quintale and Coez.",
+        "Veezo is a pianist and producer rooted in jazz. Raised with hiphop and in love with electronica, he draws inspiration from artists such as Ahmad Jamal, Fela Kuti and Piero Umiliani.",
       image: Veezo,
     },
   ];
@@ -135,7 +135,9 @@ const Artists = () => {
       <Grid className="py-10">
         {cards.map((card) => (
           <div
-            onClick={() => setShowText(!showText)}
+            onClick={() =>
+              setShowText((prev) => (prev === card.name ? null : card.name))
+            }
             key={card.name}
             className="col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
           >
@@ -143,7 +145,7 @@ const Artists = () => {
             <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-black bg-opacity-40">
               <h5
                 className={`lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 px-5 text-center ${
-                  showText
+                  showText === card.name
                     ? "max-[1024px]:opacity-100"
                     : "max-[1024px]:opacity-0"
                 }`}
