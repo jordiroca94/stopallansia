@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
 import SimpleAnimation from "./animations/SimpleAnimation";
@@ -21,6 +22,8 @@ import TechnoKoffie from "../../public/images/lineup/techno-koffie.png";
 import Veezo from "../../public/images/lineup/veezo.png";
 
 const Artists = () => {
+  const [showText, setShowText] = useState(false);
+
   const cards = [
     {
       name: "b-lions",
@@ -132,12 +135,19 @@ const Artists = () => {
       <Grid className="py-10">
         {cards.map((card) => (
           <div
+            onClick={() => setShowText(!showText)}
             key={card.name}
             className="col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
           >
             <Image src={card.image} alt={card.name} />
             <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-black bg-opacity-40">
-              <h5 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-5 text-center ">
+              <h5
+                className={`lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 px-5 text-center ${
+                  showText
+                    ? "max-[1024px]:opacity-100"
+                    : "max-[1024px]:opacity-0"
+                }`}
+              >
                 {card.description}
               </h5>
             </div>
