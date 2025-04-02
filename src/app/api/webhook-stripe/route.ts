@@ -5,9 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-12-18.acacia",
 });
 
-// const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
-// Helper: convert ReadableStream to Buffer
 async function readStreamToBuffer(
   readable: ReadableStream<Uint8Array>
 ): Promise<Buffer> {
@@ -37,8 +36,6 @@ export async function POST(req: NextRequest) {
   const rawBody = await readStreamToBuffer(req.body);
 
   let event: Stripe.Event;
-  const webhookSecret =
-    "whsec_7b11f4e92d8520dab0b2d6e884b84530830536b8016397971f5936858e01aee0";
 
   try {
     event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret);
@@ -48,12 +45,11 @@ export async function POST(req: NextRequest) {
     return new Response(`Webhook Error: ${error.message}`, { status: 400 });
   }
 
-  // 🔔 Event handling
   switch (event.type) {
-    case "checkout.session.completed":
-      const session = event.data.object as Stripe.Checkout.Session;
-      console.log("✅ Checkout session completed:", session);
-      break;
+    // case "checkout.session.completed":
+    //   const session = event.data.object as Stripe.Checkout.Session;
+    //   console.log("✅ Checkout session completed:", session);
+    //   break;
     case "payment_intent.succeeded":
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       console.log("✅ PaymentIntent succeeded:", paymentIntent);
