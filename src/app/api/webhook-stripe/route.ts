@@ -1,5 +1,10 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
+import fs from "fs";
+import path from "path";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-12-18.acacia",
@@ -46,13 +51,32 @@ export async function POST(req: NextRequest) {
   }
 
   switch (event.type) {
-    // case "checkout.session.completed":
-    //   const session = event.data.object as Stripe.Checkout.Session;
-    //   console.log("✅ Checkout session completed:", session);
-    //   break;
     case "payment_intent.succeeded":
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log("✅ PaymentIntent succeeded:", paymentIntent);
+      const customerEmail =
+        paymentIntent.receipt_email || "customer@example.com";
+      const amount = (paymentIntent.amount_received / 100).toFixed(2); // In dollars
+
+      // Replace variables in HTML (basic example)
+      const templatePath = path.join(
+        process.cwd(),
+        "emails",
+        "payment-success.html"
+      );
+      let html = fs.readFileSync(templatePath, "utf8");
+      html = html.replace("{{amount}}", `$${amount}`);
+
+      try {
+        await resend.emails.send({
+          from: "Acme Store <onboarding@resend.dev>",
+          to: customerEmail,
+          subject: "Stop-all-ansia Payment Confirmation",
+          html,
+        });
+        console.log("Email sent via Resend to:", customerEmail);
+      } catch (error) {
+        console.error("Resend error:", error);
+      }
       break;
     default:
       console.log(`ℹ️ Unhandled event type: ${event.type}`);

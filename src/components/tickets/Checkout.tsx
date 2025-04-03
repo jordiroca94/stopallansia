@@ -26,6 +26,7 @@ const Checkout = ({ amount }: { amount: number }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        // ADD DESCRIPTION HERE TOO TO RECIEVE ON THE WEBHOOK AND KNOW WHAT DID THE USER PAY FOR
         amount: convertToSubcurrency(amount),
       }),
     })
