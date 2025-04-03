@@ -50,19 +50,18 @@ export async function POST(req: NextRequest) {
 
   switch (event.type) {
     case "payment_intent.succeeded":
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      const paymentIntent = event.data.object;
       const customerEmail =
-        paymentIntent.receipt_email || "customer@example.com";
-      // const amount = (paymentIntent.amount_received / 100).toFixed(2); // In dollars
+        // @ts-expect-error - Accessing nested properties that might not be fully typed in Stripe's types
+        paymentIntent.data?.object?.charges?.data?.[0]?.billing_details?.email;
 
       try {
         await resend.emails.send({
-          from: "Acme Store <onboarding@resend.dev>",
-          to: "jordirocasoler94@gmail.com",
+          from: "Stop All Ansia <onboarding@resend.dev>",
+          to: customerEmail,
           subject: "Stop All Ansia Payment Confirmation",
           html: "<p>Thanks for signing up with Acme Store.</p>",
         });
-        console.log("Email sent via Resend to:", customerEmail);
       } catch (error) {
         console.error("Resend error:", error);
       }
