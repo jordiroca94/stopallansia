@@ -50,17 +50,19 @@ export async function POST(req: NextRequest) {
 
   switch (event.type) {
     case "payment_intent.succeeded":
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      const paymentIntent = event.data.object;
       const customerEmail =
         // @ts-expect-error Stripe types are not accurate
-        paymentIntent?.charges?.data?.[0]?.billing_details?.email ||
-        "customer@example.com";
+        paymentIntent?.charges?.data?.[0]?.billing_details?.email;
+      // @ts-expect-error Stripe types are not accurate
+      const amountCaptured = paymentIntent.charges.data[0].amount_captured;
+
       try {
         await resend.emails.send({
           from: "Stop All Ansia <onboarding@resend.dev>",
           to: customerEmail,
           subject: "Stop All Ansia Payment Confirmation",
-          html: "<p>Thanks for signing up with Acme Store.</p>",
+          html: `<p>Your payment of <strong>${amountCaptured / 100}€</strong> has been successfully processed.</p>`,
         });
       } catch (error) {
         console.error("Resend error:", error);
