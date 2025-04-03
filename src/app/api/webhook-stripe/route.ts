@@ -50,11 +50,11 @@ export async function POST(req: NextRequest) {
 
   switch (event.type) {
     case "payment_intent.succeeded":
-      const paymentIntent = event.data.object;
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
       const customerEmail =
-        // @ts-expect-error - Accessing nested properties that might not be fully typed in Stripe's types
-        paymentIntent.data?.object?.charges?.data?.[0]?.billing_details?.email;
-
+        // @ts-expect-error Stripe types are not accurate
+        paymentIntent?.charges?.data?.[0]?.billing_details?.email ||
+        "customer@example.com";
       try {
         await resend.emails.send({
           from: "Stop All Ansia <onboarding@resend.dev>",
