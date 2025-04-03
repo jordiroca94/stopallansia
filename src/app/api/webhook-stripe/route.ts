@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
       try {
         await resend.emails.send({
           from: "Acme Store <onboarding@resend.dev>",
-          to: customerEmail,
+          to: "jordirocasoler94@gmail.com",
           subject: "Stop All Ansia Payment Confirmation",
           html: "<p>Thanks for signing up with Acme Store.</p>",
         });
