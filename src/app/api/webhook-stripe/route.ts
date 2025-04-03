@@ -1,7 +1,5 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
-import fs from "fs";
-import path from "path";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -55,23 +53,14 @@ export async function POST(req: NextRequest) {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
       const customerEmail =
         paymentIntent.receipt_email || "customer@example.com";
-      const amount = (paymentIntent.amount_received / 100).toFixed(2); // In dollars
-
-      // Replace variables in HTML (basic example)
-      const templatePath = path.join(
-        process.cwd(),
-        "emails",
-        "payment-success.html"
-      );
-      let html = fs.readFileSync(templatePath, "utf8");
-      html = html.replace("{{amount}}", `$${amount}`);
+      // const amount = (paymentIntent.amount_received / 100).toFixed(2); // In dollars
 
       try {
         await resend.emails.send({
           from: "Acme Store <onboarding@resend.dev>",
           to: customerEmail,
           subject: "Stop All Ansia Payment Confirmation",
-          html,
+          html: "<p>Thanks for signing up with Acme Store.</p>",
         });
         console.log("Email sent via Resend to:", customerEmail);
       } catch (error) {
