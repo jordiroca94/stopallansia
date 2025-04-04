@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
+import { readFile } from "fs/promises";
+import path from "path";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,6 +11,22 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+
+async function getEmailTemplate(
+  description: string,
+  amount: number
+): Promise<string> {
+  const filePath = path.resolve(
+    process.cwd(),
+    "src/templates/email-template.html"
+  );
+  let template = await readFile(filePath, "utf-8");
+
+  template = template.replace("{{description}}", description);
+  template = template.replace("{{amount}}", (amount / 100).toFixed(2)); // Euro format
+
+  return template;
+}
 
 async function readStreamToBuffer(
   readable: ReadableStream<Uint8Array>
@@ -59,16 +77,14 @@ export async function POST(req: NextRequest) {
       // @ts-expect-error Stripe types are not accurate
       const description = paymentIntent.charges.data[0].description;
 
+      const html = await getEmailTemplate(description, amount);
+
       try {
         await resend.emails.send({
           from: "Stop All Ansia <onboarding@resend.dev>",
           to: customerEmail,
           subject: "Stop All Ansia Payment Confirmation",
-          html: `
-  <p>Your payment has been successfully processed.</p>
-  <p><strong>Tickets</strong><br>${description}</p>
-  <p><strong>Price</strong><br>${amount / 100}€</p>
-`,
+          html,
         });
       } catch (error) {
         console.error("Resend error:", error);

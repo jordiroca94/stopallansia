@@ -19,6 +19,8 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const ReserveTickets = () => {
   const [amount, setAmount] = useState<number | null>(null);
+  const [description, setDescription] = useState("");
+
   const refReserveForm = useRef<HTMLFormElement>(null);
 
   const reserveSchema = z.object({
@@ -45,23 +47,29 @@ const ReserveTickets = () => {
   }, [watchedOption]);
 
   const handleReserve = async (value: { option: string }) => {
-    let pass = { type: "", price: 0 };
+    let pass = { type: "", price: 0, description: "" };
     switch (value.option) {
       case "full-pass":
         pass = {
           type: "full-pass",
+          description:
+            "Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM",
           price: 80,
         };
         break;
       case "friday-pass":
         pass = {
           type: "friday-pass",
+          description:
+            "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM",
           price: 50,
         };
         break;
       case "saturday-pass":
         pass = {
           type: "saturday-pass",
+          description:
+            "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM",
           price: 50,
         };
         break;
@@ -69,6 +77,7 @@ const ReserveTickets = () => {
         break;
     }
     setAmount(pass.price);
+    setDescription(pass.description);
   };
 
   return (
@@ -136,7 +145,7 @@ const ReserveTickets = () => {
                 currency: "eur",
               }}
             >
-              <Checkout amount={amount} />
+              <Checkout amount={amount} description={description} />
             </Elements>
           )}
         </div>

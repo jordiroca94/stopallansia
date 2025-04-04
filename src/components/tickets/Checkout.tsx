@@ -11,7 +11,12 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { useLocale } from "next-intl";
 import SimpleAnimation from "../animations/SimpleAnimation";
 
-const Checkout = ({ amount }: { amount: number }) => {
+type Props = {
+  amount: number;
+  description: string;
+};
+
+const Checkout = ({ amount, description }: Props) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -26,13 +31,13 @@ const Checkout = ({ amount }: { amount: number }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        description: "Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM",
+        description: description,
         amount: convertToSubcurrency(amount),
       }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, [amount]);
+  }, [amount, description]);
 
   const handlePayment = async () => {
     setLoading(true);
