@@ -1,12 +1,85 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Payment Confirmation Template</title>
+    <meta charset="UTF-8" />
+    <title>Payment Confirmation</title>
   </head>
-  <body>
-    <p>Your payment has been successfully processed.</p>
-    <p><strong>Tickets</strong><br />{{description}}</p>
-    <p><strong>Price</strong><br />{{amount}}€</p>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+    "
+  >
+    <table
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      style="
+        max-width: 600px;
+        margin: auto;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <tr>
+        <td style="padding: 20px; text-align: center">
+          <img
+            src="https://stop-all-ansia.vercel.app/images/logo.png"
+            alt="Logo"
+            style="max-width: 180px; margin-bottom: 10px"
+          />
+          <h2 style="margin: 0; font-size: 20px; color: #333">
+            La Marina Collective
+          </h2>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 0 30px">
+          <hr
+            style="border: none; border-top: 1px solid #ddd; margin: 20px 0"
+          />
+          <p style="font-size: 16px; color: #333">
+            Hi! Thanks for your booking!
+          </p>
+
+          <p style="font-size: 16px; color: #333">
+            <strong>Tickets:</strong><br />
+            {{description}}
+          </p>
+
+          <p style="font-size: 16px; color: #333">
+            <strong>Price:</strong><br />
+            {{amount}}€
+          </p>
+
+          <hr
+            style="border: none; border-top: 1px solid #ddd; margin: 20px 0"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            padding: 0 30px 30px 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+          "
+        >
+          <p>
+            If you have any questions, contact
+            <strong>La Marina Collective</strong>.
+            <br />
+            <a
+              href="https://www.instagram.com/stop.all.ansia/"
+              style="color: #1a73e8; text-decoration: none"
+              >Instagram: @stop.all.ansia</a
+            >
+          </p>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
