@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
 
       try {
         await resend.emails.send({
-          from: "Stop All Ansia <onboarding@resend.dev>",
+          from: "Stop All Ansia <onboarding@jordirocasoler.com>",
           to: customerEmail,
           subject: "Stop All Ansia Payment Confirmation",
           html,
