@@ -17,7 +17,11 @@ const languages: Language[] = [
   { code: "it", name: "IT", flag: "🇮🇹" },
 ];
 
-export default function LanguageSelector() {
+export default function LanguageSelector({
+  mobile = false,
+}: {
+  mobile?: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const locale = useLocale();
@@ -62,19 +66,24 @@ export default function LanguageSelector() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-150 ease-in-out"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
         <span className="text-2xl">{selectedLanguage.flag}</span>
-        <span className="hidden sm:inline text-base text-bold">
+        <span className="hidden sm:inline text-base text-bold ">
           {selectedLanguage.name}
         </span>
-        <IoChevronDownOutline className="size-4" />
+        <IoChevronDownOutline
+          className={`size-4 ${mobile ? "text-white" : "text-black"}`}
+        />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 py-2 w-24 bg-black text-white rounded-md shadow-xl z-20">
+        <div
+          className={`absolute right-0 mt-2 py-2 w-24 bg-black text-white rounded-md shadow-xl z-20 ${mobile ? "border border-white" : ""}`}
+          role="menu"
+        >
           {languages.map((language) => (
             <button
               key={language.code}
@@ -83,7 +92,7 @@ export default function LanguageSelector() {
               role="menuitem"
             >
               <span className="mr-2 text-2xl">{language.flag}</span>
-              <span>{language.name}</span>
+              <span className="text-white">{language.name}</span>
             </button>
           ))}
         </div>

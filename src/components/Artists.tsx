@@ -139,7 +139,7 @@ const Artists = () => {
               setShowText((prev) => (prev === card.name ? null : card.name))
             }
             key={card.name}
-            className="col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
+            className="col-span-4 sm:col-span-2 lg:col-span-4 rounded-2xl overflow-hidden shadow-xl relative group"
           >
             <Image src={card.image} alt={card.name} />
             <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-semibold bg-black bg-opacity-40">

@@ -2,14 +2,15 @@ import { Link } from "@/i18n/routing";
 import Logo from "../icons/logo";
 import { useTranslations } from "next-intl";
 import LanguageSelector from "./LanguageSelector";
+import { MobileMenu } from "./MobileMenu";
 
 const Header = ({ parallax }: { parallax?: boolean }) => {
   const t = useTranslations();
 
-  const links: { link: "/about" | "/reserve" | "/artists"; label: string }[] = [
-    { link: "/about", label: t("ABOUT") },
-    { link: "/reserve", label: t("TICKETS") },
-    { link: "/artists", label: t("ARTISTS") },
+  const navItems = [
+    { link: "/about" as const, label: t("ABOUT") },
+    { link: "/reserve" as const, label: t("TICKETS") },
+    { link: "/artists" as const, label: t("ARTISTS") },
   ];
 
   return (
@@ -24,12 +25,13 @@ const Header = ({ parallax }: { parallax?: boolean }) => {
       >
         {Logo}
       </Link>
-      <div className="flex items-center gap-2 lg:gap-4">
-        {links.map(({ link, label }) => (
+      <MobileMenu />
+      <div className="hidden sm:flex items-center gap-2 lg:gap-4">
+        {navItems.map(({ link, label }) => (
           <Link
             key={label}
             href={link}
-            className="font-extrabold text-sm lg:text-lg uppercase underlineAfterHover"
+            className="font-extrabold text-lg uppercase underlineAfterHover"
           >
             {label}
           </Link>
