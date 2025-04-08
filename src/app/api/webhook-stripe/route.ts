@@ -4,8 +4,28 @@ import { Resend } from "resend";
 import { readFile } from "fs/promises";
 import path from "path";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+type StripePaymentIntent = {
+  data: {
+    object: {
+      charges: {
+        data: {
+          amount: number;
+          description: string;
+          billing_details: {
+            email: string;
+          };
+          payment_method_details: {
+            card: {
+              last4: string;
+            };
+          };
+        }[];
+      };
+    };
+  };
+};
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-12-18.acacia",
 });
@@ -68,36 +88,39 @@ export async function POST(req: NextRequest) {
     return new Response(`Webhook Error: ${error.message}`, { status: 400 });
   }
 
-  switch (event.type) {
-    case "payment_intent.succeeded":
-      const paymentIntent = event.data.object;
-      const customerEmail =
-        // @ts-expect-error Stripe types are not accurate
-        paymentIntent?.charges?.data?.[0]?.billing_details?.email;
-      // @ts-expect-error Stripe types are not accurate
-      const amount = paymentIntent.charges.data[0].amount;
-      // @ts-expect-error Stripe types are not accurate
-      const description = paymentIntent.charges.data[0].description;
+  if (event.type === "payment_intent.succeeded") {
+    const paymentIntent = event as unknown as StripePaymentIntent;
 
-      const last4Digits =
-        // @ts-expect-error Stripe types are not accurate
-        paymentIntent.charges.data[0].payment_method_details.card.last4;
+    const charge = paymentIntent.data.object.charges.data[0];
 
-      const html = await getEmailTemplate(description, amount, last4Digits);
+    if (!charge) {
+      return new Response("No charge data found", { status: 400 });
+    }
 
-      try {
-        await resend.emails.send({
-          from: "Stop All Ansia <stopallansia@jordirocasoler.com>",
-          to: customerEmail,
-          subject: "Stop All Ansia Payment Confirmation",
-          html,
-        });
-      } catch (error) {
-        console.error("Resend error:", error);
-      }
-      break;
-    default:
-      console.log(`ℹ️ Unhandled event type: ${event.type}`);
+    const { billing_details, amount, description, payment_method_details } =
+      charge;
+
+    const customerEmail = billing_details?.email;
+    const last4Digits = payment_method_details?.card?.last4;
+
+    if (!customerEmail || !last4Digits || !description) {
+      return new Response("Missing charge details", { status: 400 });
+    }
+
+    const html = await getEmailTemplate(description, amount, last4Digits);
+
+    try {
+      await resend.emails.send({
+        from: "Stop All Ansia <stopallansia@jordirocasoler.com>",
+        to: customerEmail,
+        subject: "Stop All Ansia Payment Confirmation",
+        html,
+      });
+    } catch (error) {
+      console.error("❌ Resend email error:", error);
+    }
+  } else {
+    console.log(`ℹ️ Unhandled event type: ${event.type}`);
   }
 
   return new Response(JSON.stringify({ received: true }), { status: 200 });
