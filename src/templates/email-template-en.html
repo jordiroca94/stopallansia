@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Confirmación de Pago</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+    "
+  >
+    <table
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      style="
+        max-width: 600px;
+        margin: auto;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <tr>
+        <td
+          style="
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ffeeba;
+          "
+        >
+          <strong>⚠️ Modo Desarrollo:</strong> Este correo es solo para pruebas
+          y no confirma un pago o reserva real.
+        </td>
+      </tr>
+
+      <tr>
+        <td style="padding: 20px; text-align: center">
+          <img
+            src="https://stop-all-ansia.vercel.app/images/logo.png"
+            alt="Logo"
+            style="max-width: 180px; margin-bottom: 10px"
+          />
+          <h2 style="margin: 0; font-size: 20px; color: #333">
+            La Marina Collective
+          </h2>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 0 30px">
+          <hr
+            style="border: none; border-top: 1px solid #ddd; margin: 20px 0"
+          />
+          <p style="font-size: 16px; color: #333">
+            ¡Hola! ¡Gracias por tu reserva!
+          </p>
+
+          <p style="font-size: 16px; color: #333">
+            <strong>Entradas</strong><br />
+            {{description}}
+          </p>
+
+          <p style="font-size: 16px; color: #333">
+            <strong>Precio</strong><br />
+            {{amount}}€
+          </p>
+          <p style="font-size: 16px; color: #333">
+            <strong>Método de pago</strong><br />
+            Visa terminada en •••• {{last4Digits}}
+          </p>
+
+          <hr
+            style="border: none; border-top: 1px solid #ddd; margin: 20px 0"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            padding: 0 30px 30px 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+          "
+        >
+          <p>
+            Si tienes alguna pregunta, contacta con
+            <strong>La Marina Collective</strong>.
+            <br />
+            <a
+              href="https://www.instagram.com/stop.all.ansia/"
+              style="color: #1a73e8; text-decoration: none"
+              >Instagram: @stop.all.ansia</a
+            >
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
