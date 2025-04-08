@@ -14,7 +14,8 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 async function getEmailTemplate(
   description: string,
-  amount: number
+  amount: number,
+  last4Digits: string
 ): Promise<string> {
   const filePath = path.resolve(
     process.cwd(),
@@ -23,7 +24,8 @@ async function getEmailTemplate(
   let template = await readFile(filePath, "utf-8");
 
   template = template.replace("{{description}}", description);
-  template = template.replace("{{amount}}", (amount / 100).toFixed(2)); // Euro format
+  template = template.replace("{{amount}}", (amount / 100).toFixed(2));
+  template = template.replace("{{last4Digits}}", last4Digits);
 
   return template;
 }
@@ -77,7 +79,11 @@ export async function POST(req: NextRequest) {
       // @ts-expect-error Stripe types are not accurate
       const description = paymentIntent.charges.data[0].description;
 
-      const html = await getEmailTemplate(description, amount);
+      const last4Digits =
+        // @ts-expect-error Stripe types are not accurate
+        paymentIntent.charges.data[0].payment_method_details.card.last4;
+
+      const html = await getEmailTemplate(description, amount, last4Digits);
 
       try {
         await resend.emails.send({
