@@ -35,6 +35,7 @@ const Checkout = ({ amount, description }: Props) => {
       body: JSON.stringify({
         description: description,
         amount: convertToSubcurrency(amount),
+        locale: locale,
       }),
     })
       .then((res) => res.json())
