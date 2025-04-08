@@ -20,5 +20,65 @@
     "2": "que une la naturaleza,",
     "3": "las personas y el arte en un viaje",
     "4": "lejos de la ansiedad cotidiana."
+  },
+  "ABOUT_TITLE": "Qué es Stop All Ansia",
+  "ABOUT_DESCRIPTION": {
+    "1": "Una oportunidad para abrazar, crecer y sumergirse plenamente en el momento presente con un corazón y mente abiertos.",
+    "2": "Este es un espacio donde el arte trasciende los límites, cultivando un intercambio auténtico y duradero entre diversas formas de expresión.",
+    "3": "Stop all Ansia Festival es un retiro creativo que une naturaleza, personas y arte en un viaje lejos de la ansiedad cotidiana."
+  },
+  "ABOUT_CARDS": {
+    "1": {
+      "TITLE": "Ubicación",
+      "DESCRIPTION": "Lejos de las preocupaciones diarias, rodeado de naturaleza: aquí es donde ocurre Stop all'Ansia. Información por DM en Instagram."
+    },
+    "2": {
+      "TITLE": "Alojamiento",
+      "DESCRIPTION": "Para quedarte, trae tu propia tienda de campaña y acampa en el área designada. Se proporcionan servicios básicos: hay baños disponibles."
+    },
+    "3": {
+      "TITLE": "Comida y Bebida",
+      "DESCRIPTION": "Para ayudarnos a organizar, puedes preordenar tus comidas al reservar tu lugar en el evento (siempre puedes comprarlas en el lugar). También puedes traer tu propia comida."
+    }
+  },
+  "RESERVE_TITLE": "Reserva tu parada",
+  "RESERVE_SUBTITLE": "Cómo reservar tu lugar",
+  "RESERVE_SUBTITLE_2": "Rellena el formulario y estate atento a tu correo electrónico",
+  "RESERVE_DESCRIPTION": {
+    "1": "Elige tu pase según cuándo planeas asistir al evento, y avísanos con antelación si deseas reservar comidas (siempre puedes comprarlas en el lugar, pero avisarnos nos ayuda con la organización)",
+    "2": "Recuerda, enviar este formulario no significa que tu lugar esté confirmado.",
+    "3": "Una vez revisemos la reserva, te enviaremos una confirmación preliminar y la solicitud de contribución de participación* por correo electrónico.",
+    "4": "Tu reserva se confirmará después de recibir tu contribución de participación.",
+    "5": "*La contribución de participación cubre los costos de realización del evento; no representa en ningún caso un beneficio para los organizadores. Depende del pase que elijas (Pase Completo o Pase por Día con comidas)."
+  },
+  "RESERVE_BUTTON": "Reserva tu lugar",
+  "RESERVE_TICKETS_TITLE": "Elige tu plan",
+  "RESERVE_TICKETS_SUBTITLE": "Selecciona el tipo de pase que deseas comprar.",
+  "RESERVE_TICKETS_SUBTITLE_2": "Puedes traer tu tienda gratis o reservar un lugar en nuestra tienda glamping",
+  "RESERVE_TICKETS_PASS": {
+    "1": "Pase Completo | Acceso completo desde el viernes 4 al domingo 6, 12 PM [desde 80 €]",
+    "2": "Pase Viernes | Acceso completo desde el viernes 4 al sábado 5, 12 PM [desde 50 €]",
+    "3": "Pase Sábado | Acceso completo desde el sábado 5 al domingo 6, 12 PM [desde 50 €]"
+  },
+  "PAYMENT_SUCCESS_TITLE": "Pago enviado con éxito.",
+  "PAYMENT_SUCCESS_SUBTITLE": "Recibirás un correo de confirmación en breve.",
+  "ARTISTS_TITLE": "Edición del año pasado",
+  "ARTIST": {
+    "1": "Nacido y criado en Grecia, DJ B-Líons aporta más de 15 años de experiencia musical a las tornamesas. Con una rica formación musical, incluyendo guitarra española y trompeta, comenzó a pinchar hace más de una década en eventos locales del norte de Grecia.",
+    "2": "Michele, también conocido como Canopi, es un DJ y productor originario de Génova. Sus sets mezclan una variedad de géneros musicales, con un enfoque en estilos electrónicos y contemporáneos. En sus sets en vivo, escuchamos una mezcla eléctrica que va del Bass al Dembow, y del Breakbeat al Hardgroove Techno, creando una experiencia sonora dinámica e inmersiva.",
+    "3": "Contro il Metodo es un dúo de DJs/productores de Milán. Se caracterizan por influencias industriales, breakbeat y techno peaktime/driving. En sus producciones, atmósferas profundas y glitchy se combinan con ritmos contundentes e implacables, creando un sonido con sabor analógico y contemporáneo, diseñado para satisfacer al público de la pista de baile.",
+    "4": "Dimarziio es un DJ y productor argentino, radicado en Barcelona desde 2023. Apasionado por la música desde temprana edad, se ha dedicado a la música electrónica desde 2019. Su sonido fusiona géneros como el progressive house, con influencias de los años 90 y 2000, electro, acid house e indie dance.",
+    "5": "De la cancha de baloncesto a la mesa de ping pong, y ahora también en las tornamesas—DJ Flip (también conocido como DJ Crocs - cualquier juego de palabras con el nombre está completamente intencionado) & DJ Flop (también conocido como DJ Woody Chocolich) llevan ese mismo trabajo en equipo al set B2B.",
+    "6": "Su camino en la música comenzó en Turín en su adolescencia, junto a una temprana pasión por la escritura, inicialmente en forma poética cruda, que luego evolucionó hacia letras de canciones elaboradas. En 2019, lanzó su primer sencillo, 6990, dando inicio oficialmente al proyecto FRANCO FORTE.",
+    "7": "La música de Garage Bagarre es una mezcla electrizante de garage rock de los años 60, surf, blues y psicodelia. Originarios del corazón de Turín, esta banda canaliza energía cruda en cada presentación, fusionando ritmos intensos y sonidos vibrantes.",
+    "8": "INERBA es un proyecto que nació hace dos años en Turín. Mezcla rock, funk y pop en un sonido electrizante, donde las potentes voces del cantante principal ocupan el centro del escenario, agregando profundidad y emoción a cada pista.",
+    "9": "Amante del ritmo, Johnny C nos llevará en un viaje por los distintos subgéneros de la música electrónica. Comenzó con el piano desde joven y luego dominó la percusión y la batería, fusionando una variedad de subgéneros electrónicos en sus sets—pasando con fluidez del house al electro, acid al disco, y techno al psy-trance.",
+    "10": "Kaiser nació con una fuerte inclinación por la cultura hip-hop y el rap. Más tarde, rompió fronteras y comenzó a buscar samples e influencias. Este amor lo llevó a convertirse en un verdadero conocedor de la cultura de la música negra. Sus palabras favoritas son “contaminación de personas”.",
+    "11": "Un DJ y productor argentino radicado en Barcelona, que lleva su mezcla única de house, minimal house y deep tech a las pistas de baile. Inspirado por grandes como Chris Stussy, Anotr, Marco Carola, Mateo Dufour, Toman y Pawsa, ofrece sets frescos, impulsados por el groove, que mantienen la energía alta.",
+    "12": "Un buscador de grooves incurable, habituado inicialmente a la noble escena clubbing milanesa, pasó naturalmente al otro lado de la consola, gracias a una rica base en house, disco, funk, soul y música africana.",
+    "13": "Rhythmicus distortus urbanus. Buscamos un sonido distorsionado y rítmico, nos gusta la velocidad y la ruptura de estructuras. Queremos hacer que la gente baile y salte porque de eso se trata el rock. Así es como R.U.N entra en escena, y ya estamos emocionados, listos para sumergirnos en su música.",
+    "14": "Sova Sunset aporta energía cruda al escenario, mezclando voces rasposas y guitarras distorsionadas nacidas en las calles de Milán. Compuesta por Federico Navarra (voz y guitarra), Samuele Roda (batería), Gabriele Umana (guitarra, bajo, teclados) y Gianluca Sansone (guitarra), la banda fusiona rock alternativo y punk, creando un sonido poderoso y electrizante.",
+    "15": "Techno Koffie es un colectivo de tres: Federico, Guido y Jacopo. Comenzó al añadir un toque techno al ritual italiano de tomar café con amigos durante las aburridas tardes de domingo. Techno Koffie es ahora un nombre reconocido entre los amantes del techno en los Países Bajos.",
+    "16": "Veezo es pianista y productor con raíces en el jazz. Criado con hip hop y enamorado de la electrónica, se inspira en artistas como Ahmad Jamal, Fela Kuti y Piero Umiliani."
   }
 }
