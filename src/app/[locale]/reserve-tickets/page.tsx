@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import ReserveTickets from "@/components/tickets/ReserveTickets";
 
 export default function page() {

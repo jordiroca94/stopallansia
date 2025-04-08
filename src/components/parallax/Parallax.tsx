@@ -1,6 +1,6 @@
-import Header from "../Header";
 import ParallaxLayers from "./ParallaxLayers";
 import ParallaxCover from "./ParallaxCover";
+import Header from "../header/Header";
 
 const Parallax = () => {
   return (

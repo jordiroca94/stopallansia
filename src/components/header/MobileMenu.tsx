@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import useLockScroll from "@/hooks/useLockBodyScroll";
 import LanguageSelector from "./LanguageSelector";
 
 export function MobileMenu() {
   const t = useTranslations();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useLockScroll(isOpen);
 
   const navItems = [
     { link: "/about" as const, label: t("ABOUT") },
@@ -14,18 +18,9 @@ export function MobileMenu() {
     { link: "/artists" as const, label: t("ARTISTS") },
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
 
   return (
     <>
