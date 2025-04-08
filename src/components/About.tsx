@@ -8,25 +8,25 @@ import TextAnimation from "./animations/TextAnimation";
 import { CiLocationOn } from "react-icons/ci";
 import { RiTentLine } from "react-icons/ri";
 import { IoFastFoodOutline } from "react-icons/io5";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations();
+
   const cards = [
     {
-      title: "Location",
-      description:
-        "Far from everyday worries, surrounded by nature: this is where Stop all'Ansia happens. Info in Instagram DM.",
+      title: t("ABOUT_CARDS.1.TITLE"),
+      description: t("ABOUT_CARDS.1.DESCRIPTION"),
       icon: <CiLocationOn className="size-8" />,
     },
     {
-      title: "Accomodation",
-      description:
-        "To stay, bring your own tent and camp in the designated area. Basic amenities are provided: restrooms are available.",
+      title: t("ABOUT_CARDS.2.TITLE"),
+      description: t("ABOUT_CARDS.2.DESCRIPTION"),
       icon: <RiTentLine className="size-8" />,
     },
     {
-      title: "Eat & Drink",
-      description:
-        "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site).You are also welcome to bring your own food.",
+      title: t("ABOUT_CARDS.3.TITLE"),
+      description: t("ABOUT_CARDS.3.DESCRIPTION"),
       icon: <IoFastFoodOutline className="size-8" />,
     },
   ];
@@ -36,24 +36,14 @@ const About = () => {
       <Grid>
         <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
           <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-            WHAT IS STOP ALL ANSIA
+            {t("ABOUT_TITLE")}
           </h1>
         </SimpleAnimation>
         <div className="col-span-4 lg:col-span-6 text-base text-justify">
           <TextAnimation className="flex flex-col gap-3">
-            <p>
-              An opportunity to embrace, grow, and fully immerse oneself in the
-              present moment with an open heart and mind.
-            </p>
-            <p>
-              This is a space where art transcends limitations, cultivating an
-              authentic and lasting exchange between diverse forms of
-              expression.
-            </p>
-            <p>
-              Stop all Ansia Festival is a creative retreat that unites nature,
-              people and art in a journey away from everyday anxiety.
-            </p>
+            <p>{t("ABOUT_DESCRIPTION.1")}</p>
+            <p>{t("ABOUT_DESCRIPTION.2")}</p>
+            <p>{t("ABOUT_DESCRIPTION.3")}</p>
           </TextAnimation>
         </div>
         <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">

@@ -11,6 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import Checkout from "./Checkout";
+import { useTranslations } from "next-intl";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("Stripe public key is not defined");
@@ -18,6 +19,8 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const ReserveTickets = () => {
+  const t = useTranslations();
+
   const [amount, setAmount] = useState<number | null>(null);
   const [description, setDescription] = useState("");
 
@@ -85,27 +88,21 @@ const ReserveTickets = () => {
       <Grid className="py-6 lg:py-12">
         <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
           <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-            Choose your plan
+            {t("RESERVE_TITLE")}
           </h1>
         </SimpleAnimation>
         <div className="col-span-full flex flex-col gap-2">
           <SimpleAnimation>
             <h3 className="text-xl lg:text-2xl font-light pb-2">
-              Select the type of pass you want to buy.
+              {t("RESERVE_TICKETS_SUBTITLE")}
             </h3>
-            <p className="pb-4">
-              You can bring your tent for free or reserve a spot in our glamping
-              tent
-            </p>
+            <p className="pb-4">{t("RESERVE_TICKETS_SUBTITLE_2")}</p>
           </SimpleAnimation>
           <form ref={refReserveForm}>
             <TextAnimation className="flex flex-col gap-1 relative pb-10">
               <label className="flex gap-3 items-center">
                 <input type="radio" {...register("option")} value="full-pass" />
-                <span>
-                  Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM [from
-                  80 €]
-                </span>
+                <span>{t("RESERVE_TICKETS_PASS.1")}</span>
               </label>
               <label className="flex gap-3 items-center">
                 <input
@@ -113,10 +110,7 @@ const ReserveTickets = () => {
                   {...register("option")}
                   value="friday-pass"
                 />
-                <span>
-                  Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM
-                  [from 50 €]
-                </span>
+                <span>{t("RESERVE_TICKETS_PASS.2")}</span>
               </label>
               <label className="flex gap-3 items-center">
                 <input
@@ -124,10 +118,7 @@ const ReserveTickets = () => {
                   {...register("option")}
                   value="saturday-pass"
                 />
-                <span>
-                  Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM
-                  [from 50 €]
-                </span>
+                <span>{t("RESERVE_TICKETS_PASS.3")}</span>
               </label>
               {errors.option && (
                 <p className="text-red absolute bottom-2">
