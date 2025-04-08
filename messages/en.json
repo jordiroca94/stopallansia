@@ -60,8 +60,11 @@
     "2": "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM [from 50 €]",
     "3": "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM [from 50 €]"
   },
+  "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
+  "RESERVE_TICKETS_DETAILS": "Your details",
   "PAYMENT_SUCCESS_TITLE": "Payment succesfully sent.",
   "PAYMENT_SUCCESS_SUBTITLE": "You will receive a confirmation email shortly.",
+  "PAYEMNT_SUCCESS_DEVELOPEMENT": "Developement mode",
   "ARTISTS_TITLE": "Last year edition",
   "ARTIST": {
     "1": "Born and raised in Greece, DJ B-Líons brings over 15 years of musical experience to the decks. With a rich background in music, including Spanish guitar and trumpet, he began DJing over a decade ago at local events in northern Greece.",

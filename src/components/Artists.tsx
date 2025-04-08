@@ -34,52 +34,52 @@ const Artists = () => {
     },
     {
       name: "canopi",
-      description: t("ARTIST.1"),
+      description: t("ARTIST.2"),
       image: Canopi,
     },
     {
       name: "contro-il-metodo",
-      description: t("ARTIST.2"),
+      description: t("ARTIST.3"),
       image: ControlIlMetodo,
     },
     {
       name: "dimarziio",
-      description: t("ARTIST.3"),
+      description: t("ARTIST.4"),
       image: Dimarziio,
     },
     {
       name: "flip-flop",
-      description: t("ARTIST.4"),
+      description: t("ARTIST.5"),
       image: FlipFlop,
     },
     {
       name: "franco-forte",
-      description: t("ARTIST.5"),
+      description: t("ARTIST.6"),
       image: FrancoForte,
     },
     {
       name: "garage-bagarre",
-      description: t("ARTIST.6"),
+      description: t("ARTIST.7"),
       image: GarageBagarre,
     },
     {
       name: "inerba",
-      description: t("ARTIST.7"),
+      description: t("ARTIST.8"),
       image: Inerba,
     },
     {
       name: "johnny-c",
-      description: t("ARTIST.8"),
+      description: t("ARTIST.9"),
       image: JohnyC,
     },
     {
       name: "kaiser",
-      description: t("ARTIST.9"),
+      description: t("ARTIST.10"),
       image: Kaiser,
     },
     {
       name: "mateo-bergoglio",
-      description: t("ARTIST.10"),
+      description: t("ARTIST.11"),
       image: MateoBergoglio,
     },
     {

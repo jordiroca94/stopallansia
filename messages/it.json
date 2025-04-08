@@ -60,8 +60,11 @@
     "2": "Pass Venerdì | Accesso completo da Ven 4 a Sab 5, ore 12:00 [da 50 €]",
     "3": "Pass Sabato | Accesso completo da Sab 5 a Dom 6, ore 12:00 [da 50 €]"
   },
+  "RESERVE_TICKETS_WARNING": "Questo pagamento è in modalità di sviluppo e non rappresenta una transazione reale né una conferma di prenotazione.",
+  "RESERVE_TICKETS_DETAILS": "I tuoi dati",
   "PAYMENT_SUCCESS_TITLE": "Pagamento inviato con successo.",
   "PAYMENT_SUCCESS_SUBTITLE": "Riceverai a breve un’email di conferma.",
+  "PAYEMNT_SUCCESS_DEVELOPEMENT": "Modalità di sviluppo",
   "ARTISTS_TITLE": "Edizione dell’anno scorso",
   "ARTIST": {
     "1": "Nato e cresciuto in Grecia, DJ B-Líons porta oltre 15 anni di esperienza musicale sul palco. Con un background ricco, tra cui chitarra spagnola e tromba, ha iniziato a fare il DJ più di dieci anni fa in eventi locali nel nord della Grecia.",

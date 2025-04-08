@@ -60,8 +60,11 @@
     "2": "Pase Viernes | Acceso completo desde el viernes 4 al sábado 5, 12 PM [desde 50 €]",
     "3": "Pase Sábado | Acceso completo desde el sábado 5 al domingo 6, 12 PM [desde 50 €]"
   },
+  "RESERVE_TICKETS_WARNING": "Este pago está en modo de desarrollo y no representa una transacción real ni una confirmación de reserva.",
+  "RESERVE_TICKETS_DETAILS": "Tus datos",
   "PAYMENT_SUCCESS_TITLE": "Pago enviado con éxito.",
   "PAYMENT_SUCCESS_SUBTITLE": "Recibirás un correo de confirmación en breve.",
+  "PAYEMNT_SUCCESS_DEVELOPEMENT": "Modo desarrollo",
   "ARTISTS_TITLE": "Edición del año pasado",
   "ARTIST": {
     "1": "Nacido y criado en Grecia, DJ B-Líons aporta más de 15 años de experiencia musical a las tornamesas. Con una rica formación musical, incluyendo guitarra española y trompeta, comenzó a pinchar hace más de una década en eventos locales del norte de Grecia.",

@@ -11,7 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import Checkout from "./Checkout";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("Stripe public key is not defined");
@@ -20,10 +20,10 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const ReserveTickets = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   const [amount, setAmount] = useState<number | null>(null);
   const [description, setDescription] = useState("");
-
   const refReserveForm = useRef<HTMLFormElement>(null);
 
   const reserveSchema = z.object({
@@ -55,24 +55,21 @@ const ReserveTickets = () => {
       case "full-pass":
         pass = {
           type: "full-pass",
-          description:
-            "Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM",
+          description: t("RESERVE_TICKETS_PASS.1"),
           price: 80,
         };
         break;
       case "friday-pass":
         pass = {
           type: "friday-pass",
-          description:
-            "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM",
+          description: t("RESERVE_TICKETS_PASS.2"),
           price: 50,
         };
         break;
       case "saturday-pass":
         pass = {
           type: "saturday-pass",
-          description:
-            "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM",
+          description: t("RESERVE_TICKETS_PASS.3"),
           price: 50,
         };
         break;
@@ -134,6 +131,7 @@ const ReserveTickets = () => {
                 mode: "payment",
                 amount: convertToSubcurrency(amount),
                 currency: "eur",
+                locale: locale as "en" | "es" | "it",
               }}
             >
               <Checkout amount={amount} description={description} />

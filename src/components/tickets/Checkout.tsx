@@ -8,7 +8,7 @@ import {
   LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import SimpleAnimation from "../animations/SimpleAnimation";
 
 type Props = {
@@ -17,6 +17,8 @@ type Props = {
 };
 
 const Checkout = ({ amount, description }: Props) => {
+  const t = useTranslations();
+
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState<string>();
@@ -87,8 +89,14 @@ const Checkout = ({ amount, description }: Props) => {
   return (
     <div className="w-full flex justify-start">
       <div className="p-2 rounded-md w-full md:w-[600px]">
+        <div className="mb-8 border-red border-2 rounded-md p-3">
+          <strong>⚠️ {t("PAYEMNT_SUCCESS_DEVELOPEMENT")}: </strong>
+          {t("RESERVE_TICKETS_WARNING")}
+        </div>
         <SimpleAnimation>
-          <h3 className="text-xl lg:text-2xl font-light pb-4">Your details</h3>
+          <h3 className="text-xl lg:text-2xl font-light pb-4">
+            {t("RESERVE_TICKETS_DETAILS")}
+          </h3>
         </SimpleAnimation>
         {clientSecret && (
           <>
