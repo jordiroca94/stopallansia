@@ -55,21 +55,21 @@ const ReserveTickets = () => {
       case "full-pass":
         pass = {
           type: "full-pass",
-          description: t("RESERVE_TICKETS_PASS.1"),
+          description: t("RESERVE_TICKETS_PASS_UNPRICED.1"),
           price: 80,
         };
         break;
       case "friday-pass":
         pass = {
           type: "friday-pass",
-          description: t("RESERVE_TICKETS_PASS.2"),
+          description: t("RESERVE_TICKETS_PASS_UNPRICED.2"),
           price: 50,
         };
         break;
       case "saturday-pass":
         pass = {
           type: "saturday-pass",
-          description: t("RESERVE_TICKETS_PASS.3"),
+          description: t("RESERVE_TICKETS_PASS_UNPRICED.3"),
           price: 50,
         };
         break;

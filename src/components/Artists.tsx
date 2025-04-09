@@ -114,7 +114,7 @@ const Artists = () => {
       <Grid>
         <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
           <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-            Last year edition
+            {t("ARTISTS_TITLE")}
           </h1>
         </SimpleAnimation>
       </Grid>

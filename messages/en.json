@@ -60,6 +60,11 @@
     "2": "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM [from 50 €]",
     "3": "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM [from 50 €]"
   },
+  "RESERVE_TICKETS_PASS_UNPRICED": {
+    "1": "Full Pass | Complete access from Fri 4th, Sun 6th, 12",
+    "2": "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM",
+    "3": "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM"
+  },
   "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
   "RESERVE_TICKETS_DETAILS": "Your details",
   "PAYMENT_SUCCESS_TITLE": "Payment succesfully sent.",
