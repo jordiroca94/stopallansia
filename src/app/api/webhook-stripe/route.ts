@@ -11,9 +11,9 @@ type StripePaymentIntent = {
         data: {
           amount: number;
           description: string;
-          // metadata: {
-          //   locale: "en" | "es" | "it";
-          // };
+          metadata: {
+            locale: "en" | "es" | "it";
+          };
           billing_details: {
             email: string;
           };
@@ -87,12 +87,12 @@ export async function POST(req: NextRequest) {
       amount,
       description,
       payment_method_details,
-      // metadata,
+      metadata,
     } = charge;
 
     const customerEmail = billing_details?.email;
     const last4Digits = payment_method_details?.card?.last4;
-    // const locale = metadata?.locale;
+    const locale = metadata?.locale;
 
     if (!customerEmail || !last4Digits || !description) {
       return new Response("Missing charge details", { status: 400 });
@@ -101,8 +101,8 @@ export async function POST(req: NextRequest) {
     const html = await getEmailTemplate(
       description,
       amount,
-      last4Digits
-      // locale
+      last4Digits,
+      locale
     );
 
     try {
@@ -125,15 +125,12 @@ export async function POST(req: NextRequest) {
 async function getEmailTemplate(
   description: string,
   amount: number,
-  last4Digits: string
-  // locale: "en" | "es" | "it"
+  last4Digits: string,
+  locale: "en" | "es" | "it"
 ): Promise<string> {
-  // const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
-  // const fileTemplate = `email-template-${safeLocale}.html`;
-  const filePath = path.resolve(
-    process.cwd(),
-    "src/templates/email-template-en.html"
-  );
+  const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
+  const fileTemplate = `src/templates/email-template-${safeLocale}.html`;
+  const filePath = path.resolve(process.cwd(), fileTemplate);
   let template = await readFile(filePath, "utf-8");
 
   template = template.replace("{{description}}", description);
