@@ -18,7 +18,7 @@ export default function Page() {
             {t("PAYMENT_SUCCESS_SUBTITLE")}
           </p>
           <strong className="flex justify-center text-lg lg:text-2xl capitalize mt-10">
-            ⚠️ {t("PAYEMNT_SUCCESS_DEVELOPEMENT")}
+            ⚠️ {t("PAYEMNT_SUCCESS_DEVELOPMENT")}
           </strong>
         </Container>
         <Footer />

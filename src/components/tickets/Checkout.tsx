@@ -91,7 +91,7 @@ const Checkout = ({ amount, description }: Props) => {
     <div className="w-full flex justify-start">
       <div className="p-2 rounded-md w-full md:w-[600px]">
         <div className="mb-8 border-red border-2 rounded-md p-3">
-          <strong>⚠️ {t("PAYEMNT_SUCCESS_DEVELOPEMENT")}: </strong>
+          <strong>⚠️ {t("PAYEMNT_SUCCESS_DEVELOPMENT")}: </strong>
           {t("RESERVE_TICKETS_WARNING")}
         </div>
         <SimpleAnimation>

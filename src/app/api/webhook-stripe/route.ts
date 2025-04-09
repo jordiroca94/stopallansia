@@ -41,7 +41,8 @@ async function getEmailTemplate(
   last4Digits: string,
   locale: "en" | "es" | "it"
 ): Promise<string> {
-  const fileTemplate = `email-template-${locale}.html`;
+  const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
+  const fileTemplate = `email-template-${safeLocale}.html`;
   const filePath = path.resolve(process.cwd(), fileTemplate);
   let template = await readFile(filePath, "utf-8");
 
