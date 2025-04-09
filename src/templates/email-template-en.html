@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Confirmación de Pago</title>
+    <title>Payment Confirmation</title>
   </head>
   <body
     style="
@@ -33,8 +33,8 @@
             border-bottom: 1px solid #ffeeba;
           "
         >
-          <strong>⚠️ Modo Desarrollo:</strong> Este correo es solo para pruebas
-          y no confirma un pago o reserva real.
+          <strong>⚠️ Development Mode:</strong> This email is for testing
+          purposes only and does not confirm a real payment or booking.
         </td>
       </tr>
 
@@ -56,21 +56,21 @@
             style="border: none; border-top: 1px solid #ddd; margin: 20px 0"
           />
           <p style="font-size: 16px; color: #333">
-            ¡Hola! ¡Gracias por tu reserva!
+            Hi! Thanks for your booking!
           </p>
 
           <p style="font-size: 16px; color: #333">
-            <strong>Entradas</strong><br />
+            <strong>Tickets</strong><br />
             {{description}}
           </p>
 
           <p style="font-size: 16px; color: #333">
-            <strong>Precio</strong><br />
+            <strong>Price</strong><br />
             {{amount}}€
           </p>
           <p style="font-size: 16px; color: #333">
-            <strong>Método de pago</strong><br />
-            Visa terminada en •••• {{last4Digits}}
+            <strong>Payment method</strong><br />
+            Visa ending in •••• {{last4Digits}}
           </p>
 
           <hr
@@ -88,7 +88,7 @@
           "
         >
           <p>
-            Si tienes alguna pregunta, contacta con
+            If you have any questions, contact
             <strong>La Marina Collective</strong>.
             <br />
             <a
