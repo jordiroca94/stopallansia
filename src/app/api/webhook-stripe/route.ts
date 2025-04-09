@@ -11,9 +11,9 @@ type StripePaymentIntent = {
         data: {
           amount: number;
           description: string;
-          metadata: {
-            locale: "en" | "es" | "it";
-          };
+          // metadata: {
+          //   locale: "en" | "es" | "it";
+          // };
           billing_details: {
             email: string;
           };
@@ -34,24 +34,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
-async function getEmailTemplate(
-  description: string,
-  amount: number,
-  last4Digits: string,
-  locale: "en" | "es" | "it"
-): Promise<string> {
-  const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
-  const fileTemplate = `email-template-${safeLocale}.html`;
-  const filePath = path.resolve(process.cwd(), fileTemplate);
-  let template = await readFile(filePath, "utf-8");
-
-  template = template.replace("{{description}}", description);
-  template = template.replace("{{amount}}", (amount / 100).toFixed(2));
-  template = template.replace("{{last4Digits}}", last4Digits);
-
-  return template;
-}
 
 async function readStreamToBuffer(
   readable: ReadableStream<Uint8Array>
@@ -105,12 +87,12 @@ export async function POST(req: NextRequest) {
       amount,
       description,
       payment_method_details,
-      metadata,
+      // metadata,
     } = charge;
 
     const customerEmail = billing_details?.email;
     const last4Digits = payment_method_details?.card?.last4;
-    const locale = metadata?.locale;
+    // const locale = metadata?.locale;
 
     if (!customerEmail || !last4Digits || !description) {
       return new Response("Missing charge details", { status: 400 });
@@ -119,8 +101,8 @@ export async function POST(req: NextRequest) {
     const html = await getEmailTemplate(
       description,
       amount,
-      last4Digits,
-      locale
+      last4Digits
+      // locale
     );
 
     try {
@@ -138,4 +120,22 @@ export async function POST(req: NextRequest) {
   }
 
   return new Response(JSON.stringify({ received: true }), { status: 200 });
+}
+
+async function getEmailTemplate(
+  description: string,
+  amount: number,
+  last4Digits: string
+  // locale: "en" | "es" | "it"
+): Promise<string> {
+  // const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
+  // const fileTemplate = `email-template-${safeLocale}.html`;
+  const filePath = path.resolve(process.cwd(), "email-template-en.html");
+  let template = await readFile(filePath, "utf-8");
+
+  template = template.replace("{{description}}", description);
+  template = template.replace("{{amount}}", (amount / 100).toFixed(2));
+  template = template.replace("{{last4Digits}}", last4Digits);
+
+  return template;
 }
