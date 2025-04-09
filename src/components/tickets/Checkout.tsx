@@ -35,12 +35,12 @@ const Checkout = ({ amount, description }: Props) => {
       body: JSON.stringify({
         description: description,
         amount: convertToSubcurrency(amount),
-        // locale: locale,
+        locale: locale,
       }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, [amount, description]);
+  }, [amount, description, locale]);
 
   const handlePayment = async () => {
     setLoading(true);
