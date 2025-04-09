@@ -130,7 +130,10 @@ async function getEmailTemplate(
 ): Promise<string> {
   // const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
   // const fileTemplate = `email-template-${safeLocale}.html`;
-  const filePath = path.resolve(process.cwd(), "email-template-en.html");
+  const filePath = path.resolve(
+    process.cwd(),
+    "src/templates/email-template-en.html"
+  );
   let template = await readFile(filePath, "utf-8");
 
   template = template.replace("{{description}}", description);
