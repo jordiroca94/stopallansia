@@ -91,11 +91,17 @@ export async function POST(req: NextRequest) {
     } = charge;
 
     const customerEmail = billing_details?.email;
-    const last4Digits = payment_method_details?.card?.last4;
+    let last4Digits = payment_method_details?.card?.last4;
     const locale = metadata?.locale;
 
-    if (!customerEmail || !last4Digits || !description) {
+    if (!customerEmail || !description) {
       return new Response("Missing charge details", { status: 400 });
+    }
+
+    // Just In cas user uses link ( autosaved card )
+
+    if (!last4Digits) {
+      return (last4Digits = "XXXX");
     }
 
     const html = await getEmailTemplate(
