@@ -56,9 +56,14 @@
   "RESERVE_TICKETS_SUBTITLE": "Seleziona il tipo di pass che vuoi acquistare.",
   "RESERVE_TICKETS_SUBTITLE_2": "Puoi portare gratuitamente la tua tenda oppure prenotare un posto nella nostra tenda glamping",
   "RESERVE_TICKETS_PASS": {
-    "1": "Pass Completo | Accesso completo da Ven 4 a Dom 6, ore 12:00 [da 80 €]",
-    "2": "Pass Venerdì | Accesso completo da Ven 4 a Sab 5, ore 12:00 [da 50 €]",
-    "3": "Pass Sabato | Accesso completo da Sab 5 a Dom 6, ore 12:00 [da 50 €]"
+    "1": "Pass Completo | Accesso completo da Venerdì 4 a Domenica 6, ore 12:00 [da 80 €]",
+    "2": "Pass Venerdì | Accesso completo da Venerdì 4 a Sabato 5, ore 12:00 [da 50 €]",
+    "3": "Pass Sabato | Accesso completo da Sabato 5 a Domenica 6, ore 12:00 [da 50 €]"
+  },
+  "RESERVE_TICKETS_PASS_UNPRICED": {
+    "1": "Pass Completo | Accesso completo da Venerdì 4 a Domenica 6",
+    "2": "Pass Venerdì | Accesso completo da Venerdì 4 a Sabato 5",
+    "3": "Pass Sabato | Accesso completo da Sabato 5 a Domenica 6"
   },
   "RESERVE_TICKETS_WARNING": "Questo pagamento è in modalità di sviluppo e non rappresenta una transazione reale né una conferma di prenotazione.",
   "RESERVE_TICKETS_DETAILS": "I tuoi dati",

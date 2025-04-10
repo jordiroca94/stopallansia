@@ -56,14 +56,14 @@
   "RESERVE_TICKETS_SUBTITLE": "Select the type of pass you want to buy.",
   "RESERVE_TICKETS_SUBTITLE_2": "You can bring your tent for free or reserve a spot in our glamping tent",
   "RESERVE_TICKETS_PASS": {
-    "1": "Full Pass | Complete access from Fri 4th, Sun 6th, 12 PM [from 80 €]",
-    "2": "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM [from 50 €]",
-    "3": "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM [from 50 €]"
+    "1": "Full Pass | Complete access from Friday 4th, Sunday 6th, 12 PM [from 80 €]",
+    "2": "Friday Pass | Complete access from Friday 4th, Saturday 5th, 12 PM [from 50 €]",
+    "3": "Saturday Pass | Complete access from Saturday 5th, Sunday 6th, 12 PM [from 50 €]"
   },
   "RESERVE_TICKETS_PASS_UNPRICED": {
-    "1": "Full Pass | Complete access from Fri 4th, Sun 6th, 12",
-    "2": "Friday Pass | Complete access from Fri 4th, Sat 5th, 12 PM",
-    "3": "Saturday Pass | Complete access from Sat 5th, Sun 6th, 12 PM"
+    "1": "Full Pass | Complete access from Friday 4th, Sunday 6th",
+    "2": "Friday Pass | Complete access from Friday 4th, Saturday 5th",
+    "3": "Saturday Pass | Complete access from Saturday 5th, Sunday 6th"
   },
   "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
   "RESERVE_TICKETS_DETAILS": "Your details",

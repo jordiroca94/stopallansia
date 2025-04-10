@@ -60,6 +60,11 @@
     "2": "Pase Viernes | Acceso completo desde el viernes 4 al sábado 5, 12 PM [desde 50 €]",
     "3": "Pase Sábado | Acceso completo desde el sábado 5 al domingo 6, 12 PM [desde 50 €]"
   },
+  "RESERVE_TICKETS_PASS_UNPRICED": {
+    "1": "Pase Completo | Acceso completo desde el viernes 4 al domingo 6",
+    "2": "Pase Viernes | Acceso completo desde el viernes 4 al sábado 5",
+    "3": "Pase Sábado | Acceso completo desde el sábado 5 al domingo 6"
+  },
   "RESERVE_TICKETS_WARNING": "Este pago está en modo de desarrollo y no representa una transacción real ni una confirmación de reserva.",
   "RESERVE_TICKETS_DETAILS": "Tus datos",
   "PAYMENT_SUCCESS_TITLE": "Pago enviado con éxito.",
