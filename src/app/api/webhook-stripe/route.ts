@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
 
     // Just In cas user uses link ( autosaved card )
     if (!last4Digits) {
-      return (last4Digits = "XXXX");
+      last4Digits = "XXXX";
     }
 
     const html = await getEmailTemplate(
