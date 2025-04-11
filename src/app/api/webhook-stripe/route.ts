@@ -94,12 +94,14 @@ export async function POST(req: NextRequest) {
     let last4Digits = payment_method_details?.card?.last4;
     const locale = metadata?.locale;
 
-    if (!customerEmail || !description) {
-      return new Response("Missing charge details", { status: 400 });
+    if (!customerEmail) {
+      return new Response("Missing customer email", { status: 400 });
+    }
+    if (!description) {
+      return new Response("Missing description", { status: 400 });
     }
 
     // Just In cas user uses link ( autosaved card )
-
     if (!last4Digits) {
       return (last4Digits = "XXXX");
     }
