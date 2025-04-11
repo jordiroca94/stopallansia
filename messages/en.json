@@ -67,6 +67,7 @@
   },
   "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
   "RESERVE_TICKETS_DETAILS": "Your details",
+  "PAY": "Pay",
   "PAYMENT_SUCCESS_TITLE": "Payment succesfully sent.",
   "PAYMENT_SUCCESS_SUBTITLE": "You will receive a confirmation email shortly.",
   "PAYEMNT_SUCCESS_DEVELOPMENT": "Development mode",
