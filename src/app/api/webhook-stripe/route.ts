@@ -1,8 +1,7 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
-import { readFile } from "fs/promises";
-import path from "path";
+import getEmailTemplate from "@/lib/getEmailTemplate";
 
 type StripePaymentIntent = {
   data: {
@@ -14,6 +13,7 @@ type StripePaymentIntent = {
           metadata: {
             locale: "en" | "es" | "it";
             name: string;
+            paymentID: string;
           };
           billing_details: {
             email: string;
@@ -95,6 +95,7 @@ export async function POST(req: NextRequest) {
     let last4Digits = payment_method_details?.card?.last4;
     const locale = metadata?.locale;
     const name = metadata?.name;
+    const paymentID = metadata?.paymentID;
 
     if (!customerEmail) {
       return new Response("Missing customer email", { status: 400 });
@@ -105,10 +106,31 @@ export async function POST(req: NextRequest) {
     if (!name) {
       return new Response("Missing customer name", { status: 400 });
     }
+    if (!paymentID) {
+      return new Response("Missing payment ID", { status: 400 });
+    }
 
     // Just In cas user uses link ( autosaved card )
     if (!last4Digits) {
       last4Digits = "XXXX";
+    }
+
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/save-payment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email: customerEmail,
+          description,
+          amount,
+          paymentID,
+        }),
+      });
+    } catch (err) {
+      console.error("❌ Error saving payment:", err);
     }
 
     const html = await getEmailTemplate(
@@ -116,7 +138,8 @@ export async function POST(req: NextRequest) {
       amount,
       last4Digits,
       locale,
-      name
+      name,
+      paymentID
     );
 
     try {
@@ -134,24 +157,4 @@ export async function POST(req: NextRequest) {
   }
 
   return new Response(JSON.stringify({ received: true }), { status: 200 });
-}
-
-async function getEmailTemplate(
-  description: string,
-  amount: number,
-  last4Digits: string,
-  locale: "en" | "es" | "it",
-  name: string
-): Promise<string> {
-  const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
-  const fileTemplate = `src/templates/email-template-${safeLocale}.html`;
-  const filePath = path.resolve(process.cwd(), fileTemplate);
-  let template = await readFile(filePath, "utf-8");
-
-  template = template.replace("{{description}}", description);
-  template = template.replace("{{amount}}", (amount / 100).toFixed(2));
-  template = template.replace("{{last4Digits}}", last4Digits);
-  template = template.replace("{{name}}", name);
-
-  return template;
 }

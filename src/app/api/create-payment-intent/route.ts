@@ -1,9 +1,11 @@
+import { generatePaymentID } from "@/lib/generatePaymentID";
 import { stripe } from "@/lib/stripe";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
     const { amount, description, locale, name } = await req.json();
+    const paymentID = generatePaymentID();
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "eur",
@@ -12,6 +14,7 @@ export async function POST(req: NextRequest) {
       metadata: {
         locale: locale,
         name: name,
+        paymentID: paymentID,
       },
     });
 
