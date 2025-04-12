@@ -115,23 +115,23 @@ export async function POST(req: NextRequest) {
       last4Digits = "XXXX";
     }
 
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/save-payment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email: customerEmail,
-          description,
-          amount,
-          paymentID,
-        }),
-      });
-    } catch (err) {
-      console.error("❌ Error saving payment:", err);
-    }
+    // try {
+    //   await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/save-payment`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       name,
+    //       email: customerEmail,
+    //       description,
+    //       amount,
+    //       paymentID,
+    //     }),
+    //   });
+    // } catch (err) {
+    //   console.error("❌ Error saving payment:", err);
+    // }
 
     const html = await getEmailTemplate(
       description,
