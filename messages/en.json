@@ -41,7 +41,7 @@
       "DESCRIPTION": "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site).You are also welcome to bring your own food."
     }
   },
-  "RESERVE_TITLE": "Reserve your stop",
+  "RESERVE_TITLE": "Reserve your spot",
   "RESERVE_SUBTITLE": "How to reserve your spot",
   "RESERVE_SUBTITLE_2": "Fill the form, then keep an eye on your email",
   "RESERVE_DESCRIPTION": {
@@ -66,6 +66,9 @@
     "3": "Saturday Pass | Complete access from Saturday 5th, Sunday 6th"
   },
   "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
+  "RESERVE_TICKETS_NAME": "Full name",
+  "RESERVE_TICKETS_NAME_PLACEHOLDER": "Your full name",
+  "RESERVE_TICKETS_NAME_ERROR": "Your name is incomplete.",
   "RESERVE_TICKETS_DETAILS": "Your details",
   "PAY": "Pay",
   "PAYMENT_SUCCESS_TITLE": "Payment succesfully sent.",

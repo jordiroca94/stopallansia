@@ -41,7 +41,7 @@
       "DESCRIPTION": "Para ayudarnos a organizar, puedes preordenar tus comidas al reservar tu lugar en el evento (siempre puedes comprarlas en el lugar). También puedes traer tu propia comida."
     }
   },
-  "RESERVE_TITLE": "Reserva tu parada",
+  "RESERVE_TITLE": "Reserva tu plaza",
   "RESERVE_SUBTITLE": "Cómo reservar tu lugar",
   "RESERVE_SUBTITLE_2": "Rellena el formulario y estate atento a tu correo electrónico",
   "RESERVE_DESCRIPTION": {
@@ -66,6 +66,9 @@
     "3": "Pase Sábado | Acceso completo desde el sábado 5 al domingo 6"
   },
   "RESERVE_TICKETS_WARNING": "Este pago está en modo de desarrollo y no representa una transacción real ni una confirmación de reserva.",
+  "RESERVE_TICKETS_NAME": "Nombre completo",
+  "RESERVE_TICKETS_NAME_PLACEHOLDER": "Nombre completo",
+  "RESERVE_TICKETS_NAME_ERROR": "Tu nombre está incompleto.",
   "RESERVE_TICKETS_DETAILS": "Tus datos",
   "PAY": "Pagar",
   "PAYMENT_SUCCESS_TITLE": "Pago enviado con éxito.",

@@ -13,6 +13,7 @@ type StripePaymentIntent = {
           description: string;
           metadata: {
             locale: "en" | "es" | "it";
+            name: string;
           };
           billing_details: {
             email: string;
@@ -93,12 +94,16 @@ export async function POST(req: NextRequest) {
     const customerEmail = billing_details?.email;
     let last4Digits = payment_method_details?.card?.last4;
     const locale = metadata?.locale;
+    const name = metadata?.name;
 
     if (!customerEmail) {
       return new Response("Missing customer email", { status: 400 });
     }
     if (!description) {
       return new Response("Missing description", { status: 400 });
+    }
+    if (!name) {
+      return new Response("Missing customer name", { status: 400 });
     }
 
     // Just In cas user uses link ( autosaved card )
@@ -110,7 +115,8 @@ export async function POST(req: NextRequest) {
       description,
       amount,
       last4Digits,
-      locale
+      locale,
+      name
     );
 
     try {
@@ -134,7 +140,8 @@ async function getEmailTemplate(
   description: string,
   amount: number,
   last4Digits: string,
-  locale: "en" | "es" | "it"
+  locale: "en" | "es" | "it",
+  name: string
 ): Promise<string> {
   const safeLocale = ["en", "es", "it"].includes(locale) ? locale : "en";
   const fileTemplate = `src/templates/email-template-${safeLocale}.html`;
@@ -144,6 +151,7 @@ async function getEmailTemplate(
   template = template.replace("{{description}}", description);
   template = template.replace("{{amount}}", (amount / 100).toFixed(2));
   template = template.replace("{{last4Digits}}", last4Digits);
+  template = template.replace("{{name}}", name);
 
   return template;
 }

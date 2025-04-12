@@ -41,7 +41,7 @@
       "DESCRIPTION": "Per aiutarci nell’organizzazione, puoi preordinare i tuoi pasti quando prenoti il tuo posto (puoi comunque acquistarli sul posto). Sei anche il benvenuto se vuoi portare il tuo cibo."
     }
   },
-  "RESERVE_TITLE": "Prenota la tua fermata",
+  "RESERVE_TITLE": "Prenota il tuo posto",
   "RESERVE_SUBTITLE": "Come prenotare il tuo posto",
   "RESERVE_SUBTITLE_2": "Compila il modulo, poi tieni d’occhio la tua email",
   "RESERVE_DESCRIPTION": {
@@ -66,6 +66,9 @@
     "3": "Pass Sabato | Accesso completo da Sabato 5 a Domenica 6"
   },
   "RESERVE_TICKETS_WARNING": "Questo pagamento è in modalità di sviluppo e non rappresenta una transazione reale né una conferma di prenotazione.",
+  "RESERVE_TICKETS_NAME": "Nome completo",
+  "RESERVE_TICKETS_NAME_PLACEHOLDER": "Nome completo",
+  "RESERVE_TICKETS_NAME_ERROR": "Il tuo nome è incompleto.",
   "RESERVE_TICKETS_DETAILS": "I tuoi dati",
   "PAY": "Paga",
   "PAYMENT_SUCCESS_TITLE": "Pagamento inviato con successo.",

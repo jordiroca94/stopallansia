@@ -25,6 +25,8 @@ const Checkout = ({ amount, description }: Props) => {
   const [errorMessage, setErrorMessage] = useState<string>();
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
   const locale = useLocale();
 
   useEffect(() => {
@@ -37,14 +39,21 @@ const Checkout = ({ amount, description }: Props) => {
         description: description,
         amount: convertToSubcurrency(amount),
         locale: locale,
+        name: name,
       }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, [amount, description, locale]);
+  }, [amount, description, locale, name]);
 
   const handlePayment = async () => {
     setLoading(true);
+
+    if (!name.trim()) {
+      setNameError(t("RESERVE_TICKETS_NAME_ERROR"));
+      setLoading(false);
+      return;
+    }
 
     if (!stripe || !elements) {
       return;
@@ -95,6 +104,29 @@ const Checkout = ({ amount, description }: Props) => {
         </SimpleAnimation>
         {clientSecret && (
           <>
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-sm text-[#30313d] mb-2"
+              >
+                {t("RESERVE_TICKETS_NAME")}
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setNameError("");
+                }}
+                className="block w-full px-3 py-2.5 text-base border border-lightGray rounded-md shadow-sm placeholder-gray/90 placeholder:font-light focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition duration-150 ease-in-out"
+                placeholder={t("RESERVE_TICKETS_NAME_PLACEHOLDER")}
+                required
+              />
+              {nameError && (
+                <p className="text-red text-sm mt-1">{nameError}</p>
+              )}
+            </div>
             <LinkAuthenticationElement className="mb-4" />
             <PaymentElement />
             {errorMessage && (
