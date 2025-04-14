@@ -2,10 +2,8 @@ import { createNavigation } from "next-intl/navigation";
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  // A list of all locales that are supported
   locales: ["en", "es", "it"],
 
-  // Used when no locale matches
   defaultLocale: "en",
   pathnames: {
     "/": {
@@ -37,6 +35,16 @@ export const routing = defineRouting({
       en: "/payment-success",
       es: "/pago-realizado",
       it: "/pagamento-riuscito",
+    },
+    "/admin": {
+      en: "/admin",
+      es: "/admin",
+      it: "/admin",
+    },
+    "/admin/dashboard": {
+      en: "/admin/dashboard",
+      es: "/admin/dashboard",
+      it: "/admin/dashboard",
     },
   },
 });
