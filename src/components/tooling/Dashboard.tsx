@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
+import Loader from "../ui/Loader";
+import { HiOutlineMail } from "react-icons/hi";
 
 type TicketPayment = {
   _id: string;
@@ -22,6 +24,8 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [payments, setPayments] = useState<TicketPayment[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const getPayments = async () => {
     try {
       const res = await fetch(
@@ -37,6 +41,7 @@ export default function Dashboard() {
       if (res.ok) {
         setPayments(data.payments);
         console.log("Payments fetched successfully:", data.payments);
+        setLoading(false);
       }
       if (!res.ok) {
         console.error("Error fetching payments:", data);
@@ -45,6 +50,11 @@ export default function Dashboard() {
       console.error("❌ Error getting payment:", err);
     }
   };
+
+  const handleSendEmail = async () => {
+    console.log("Send email button clicked");
+  };
+
   useEffect(() => {
     getPayments();
   }, []);
@@ -94,7 +104,7 @@ export default function Dashboard() {
       </div>
 
       {/* Search and filters */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="relative w-full sm:w-64 lg:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -157,49 +167,67 @@ export default function Dashboard() {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {currentItems.length > 0 ? (
-                currentItems.map((payment, index) => {
-                  const date = new Date(payment.createdAt);
-                  const formattedDate = `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
-
-                  return (
-                    <tr
-                      key={payment.paymentID || index}
-                      className="hover:bg-gray-50"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {payment.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {payment.email}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {payment.description}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {payment.paymentID}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {payment.amount}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {formattedDate}
-                      </td>
-                    </tr>
-                  );
-                })
-              ) : (
+            {loading ? (
+              <tbody>
                 <tr>
                   <td
-                    colSpan={5}
+                    colSpan={6}
                     className="px-6 py-4 text-center text-sm text-gray-500"
                   >
-                    No tickets found
+                    <Loader />
                   </td>
                 </tr>
-              )}
-            </tbody>
+              </tbody>
+            ) : (
+              <tbody className="bg-white divide-y divide-gray-200">
+                {currentItems.length > 0 ? (
+                  currentItems.map((payment, index) => {
+                    const date = new Date(payment.createdAt);
+                    const formattedDate = `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
+
+                    return (
+                      <tr
+                        key={payment.paymentID || index}
+                        className="hover:bg-gray-50"
+                      >
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                          {payment.name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {payment.email}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {payment.description}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {payment.paymentID}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {payment.amount / 100} €
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {formattedDate}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <button onClick={() => handleSendEmail()}>
+                            <HiOutlineMail className="h-5 w-5 text-gray-400 hover:text-gray-600 hover:text-red" />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className="px-6 py-4 text-center text-sm text-gray-500"
+                    >
+                      No tickets found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            )}
           </table>
         </div>
         {/* Pagination */}
