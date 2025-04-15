@@ -10,16 +10,16 @@
 - **Backend:** [Node.js](https://nodejs.org/)
 - **Payments:** [Stripe](https://stripe.com/)
 - **Internationalization:** [i18n](https://react.i18next.com/)
-- **Emails:** Stripe Webhooks + [Resend](https://resend.com/)
+- **Emails:** [Resend](https://resend.com/)
 
 ---
 
 ## ✨ Features
 
-- 🎟️ Secure and smooth ticket purchasing experience via Stripe Checkout
+- 🎟️ Secure and smooth ticket purchasing experience via Stripe checkout & Stripe webhooks.
 - 🌍 Multilingual support with `i18n` for a global audience
 - 📩 Confirmation emails sent automatically after successful payments
-- ⚡ Backend API built with Node.js for webhook handling and email dispatching
+- ⚡ Backend API built with Node.js for Stripe integration email dispatching
 - 📱 Fully responsive design styled with Tailwind CSS
 
 ---

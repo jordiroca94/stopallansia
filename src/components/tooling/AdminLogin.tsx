@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter();
+  const locale = useLocale();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
@@ -20,7 +23,7 @@ export default function AdminLogin() {
     if (res.ok) {
       localStorage.setItem("admin", "true");
 
-      // Redirect to the admin dashboard
+      router.push(`/${locale}/admin/dashboard`);
     } else {
       const data = await res.json();
       setError(data.error);

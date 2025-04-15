@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
 import AdminLogin from "@/components/tooling/AdminLogin";
 
@@ -6,6 +7,7 @@ export default function page() {
     <main className="flex flex-col">
       <Header />
       <AdminLogin />
+      <Footer />
     </main>
   );
 }
