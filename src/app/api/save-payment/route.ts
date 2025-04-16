@@ -5,7 +5,8 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const res = await req.json();
-    const { name, email, description, amount, paymentID } = res;
+    const { name, email, description, amount, paymentID, last4Digits, locale } =
+      res;
     await connectMongoDB();
     await Payment.create({
       name,
@@ -13,6 +14,8 @@ export async function POST(req: Request) {
       description,
       amount,
       paymentID,
+      last4Digits,
+      locale,
     });
 
     return NextResponse.json(

@@ -6,6 +6,9 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
 import Loader from "../ui/Loader";
 import { HiOutlineMail } from "react-icons/hi";
+import { translatePass } from "./translatePass";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 type TicketPayment = {
   _id: string;
@@ -14,6 +17,8 @@ type TicketPayment = {
   description: string;
   amount: number;
   paymentID: string;
+  last4Digits: string;
+  locale: "en" | "es" | "it";
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -25,6 +30,16 @@ export default function Dashboard() {
   const itemsPerPage = 10;
   const [payments, setPayments] = useState<TicketPayment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [sendingEmailId, setSendingEmailId] = useState<string | null>(null);
+  const router = useRouter();
+  const locale = useLocale();
+
+  const handleLogout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("admin");
+      router.push(`/${locale}/admin`);
+    }
+  };
 
   const getPayments = async () => {
     try {
@@ -51,13 +66,38 @@ export default function Dashboard() {
     }
   };
 
-  const handleSendEmail = async () => {
-    console.log("Send email button clicked");
-  };
-
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isAdmin = localStorage.getItem("admin");
+      if (isAdmin !== "true") {
+        router.push(`/${locale}/admin`);
+      }
+    }
     getPayments();
   }, []);
+
+  // Resend email
+
+  const handleSendEmail = async (payment: TicketPayment) => {
+    setSendingEmailId(payment._id);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payment),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Email failed:", data.error);
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
+    }
+
+    setSendingEmailId(null);
+  };
 
   // Filter payments based on search term
   const filteredPayments = payments.filter((payment) => {
@@ -88,24 +128,41 @@ export default function Dashboard() {
       setCurrentPage(page);
     }
   };
+  const isAdmin = localStorage.getItem("admin");
+
+  if (isAdmin !== "true") return;
 
   return (
     <div className="w-full bg-white min-h-screen">
       {/* Header */}
       <div className="bg-gradient-to-r from-red to-white py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold text-white">
-            Stop All Ansia Dashboard
-          </h1>
-          <p className="mt-1 text-white/80">
-            Manage and track all ticket payments
-          </p>
+        <div className="flex ">
+          <div className="w-full px-2 sm:px-10">
+            <h1 className="text-2xl font-bold text-white">
+              Stop All Ansia Dashboard
+            </h1>
+            <p className="mt-1 text-white/80">
+              Manage and track all ticket payments
+            </p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="hidden mt-4 sm:inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
+          >
+            Logout Admin
+          </button>
         </div>
       </div>
 
       {/* Search and filters */}
       <div className="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <button
+            onClick={handleLogout}
+            className="sm:hidden inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
+          >
+            Logout Admin
+          </button>
           <div className="relative w-full sm:w-64 lg:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <CiSearch className="h-5 w-5 text-gray-400" />
@@ -174,22 +231,19 @@ export default function Dashboard() {
                     colSpan={6}
                     className="px-6 py-4 text-center text-sm text-gray-500"
                   >
-                    <Loader />
+                    <Loader className="mt-10" />
                   </td>
                 </tr>
               </tbody>
             ) : (
               <tbody className="bg-white divide-y divide-gray-200">
                 {currentItems.length > 0 ? (
-                  currentItems.map((payment, index) => {
+                  currentItems.map((payment) => {
                     const date = new Date(payment.createdAt);
                     const formattedDate = `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
 
                     return (
-                      <tr
-                        key={payment.paymentID || index}
-                        className="hover:bg-gray-50"
-                      >
+                      <tr key={payment.paymentID} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
                           {payment.name}
                         </td>
@@ -197,7 +251,7 @@ export default function Dashboard() {
                           {payment.email}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {payment.description}
+                          {translatePass(payment.description)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {payment.paymentID}
@@ -209,8 +263,12 @@ export default function Dashboard() {
                           {formattedDate}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <button onClick={() => handleSendEmail()}>
-                            <HiOutlineMail className="h-5 w-5 text-gray-400 hover:text-gray-600 hover:text-red" />
+                          <button onClick={() => handleSendEmail(payment)}>
+                            {sendingEmailId === payment._id ? (
+                              <Loader className="h-5 w-5" />
+                            ) : (
+                              <HiOutlineMail className="h-5 w-5 text-gray-400 hover:text-gray-600 hover:text-red" />
+                            )}
                           </button>
                         </td>
                       </tr>

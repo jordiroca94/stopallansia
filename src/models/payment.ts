@@ -7,6 +7,8 @@ const paymentSchema = new Schema(
     description: { type: String, required: true },
     amount: { type: Number, required: true },
     paymentID: { type: String, required: true },
+    last4Digits: { type: String, required: true },
+    locale: { type: String, required: true },
   },
   { timestamps: true }
 );

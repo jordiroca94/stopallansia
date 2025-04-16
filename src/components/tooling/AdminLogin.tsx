@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
@@ -10,6 +10,7 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const router = useRouter();
   const locale = useLocale();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
@@ -29,6 +30,15 @@ export default function AdminLogin() {
       setError(data.error);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isAdmin = localStorage.getItem("admin");
+      if (isAdmin == "true") {
+        router.push(`/${locale}/admin/dashboard`);
+      }
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 -mt-[88px] px-4">
