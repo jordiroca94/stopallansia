@@ -31,6 +31,7 @@ export default function Dashboard() {
   const [payments, setPayments] = useState<TicketPayment[]>([]);
   const [loading, setLoading] = useState(true);
   const [sendingEmailId, setSendingEmailId] = useState<string | null>(null);
+  const [totalAmountPaid, setTotalAmountPaid] = useState(0);
   const router = useRouter();
   const locale = useLocale();
 
@@ -55,6 +56,13 @@ export default function Dashboard() {
       const data = await res.json();
       if (res.ok) {
         setPayments(data.payments);
+        const totalPayments = data.payments.reduce(
+          (accumulator: number, payment: TicketPayment) =>
+            accumulator + payment.amount,
+          0
+        );
+
+        setTotalAmountPaid(totalPayments / 100);
         console.log("Payments fetched successfully:", data.payments);
         setLoading(false);
       }
@@ -144,12 +152,15 @@ export default function Dashboard() {
             <p className="mt-1 text-white/80">
               Manage and track all ticket payments
             </p>
+            <p className="mt-1 text-white/80">
+              Total payments: {totalAmountPaid.toLocaleString("es-ES")} €
+            </p>
           </div>
           <button
             onClick={handleLogout}
-            className="hidden mt-4 sm:inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
+            className="hidden mt-4 sm:inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-6 py-3 rounded hover:bg-gray-100 transition whitespace-nowrap h-min"
           >
-            Logout Admin
+            Logout
           </button>
         </div>
       </div>
@@ -161,7 +172,7 @@ export default function Dashboard() {
             onClick={handleLogout}
             className="sm:hidden inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
           >
-            Logout Admin
+            Logout
           </button>
           <div className="relative w-full sm:w-64 lg:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -278,7 +289,7 @@ export default function Dashboard() {
                   <tr>
                     <td
                       colSpan={5}
-                      className="px-6 py-4 text-center text-sm text-gray-500"
+                      className="px-6 py-10 text-center text-sm text-gray-500 w-full"
                     >
                       No tickets found
                     </td>
