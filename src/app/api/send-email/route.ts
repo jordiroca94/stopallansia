@@ -7,6 +7,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   const payment = await req.json();
 
+  if (!payment.last4Digits) {
+    payment.last4Digits = "XXXX";
+  }
+
   try {
     const html = await getEmailTemplate(
       payment.description,
