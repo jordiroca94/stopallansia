@@ -30,12 +30,14 @@ export default function Dashboard() {
   const itemsPerPage = 10;
   const [payments, setPayments] = useState<TicketPayment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [logoutLoading, setLogoutLoading] = useState(false);
   const [sendingEmailId, setSendingEmailId] = useState<string | null>(null);
   const [totalAmountPaid, setTotalAmountPaid] = useState(0);
   const router = useRouter();
   const locale = useLocale();
 
   const handleLogout = () => {
+    setLogoutLoading(true);
     if (typeof window !== "undefined") {
       localStorage.removeItem("admin");
       router.push(`/${locale}/admin`);
@@ -160,7 +162,7 @@ export default function Dashboard() {
             onClick={handleLogout}
             className="hidden mt-4 sm:inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-6 py-3 rounded hover:bg-gray-100 transition whitespace-nowrap h-min"
           >
-            Logout
+            {logoutLoading ? <Loader className="h-5 w-5" /> : "Logout"}
           </button>
         </div>
       </div>
@@ -172,7 +174,7 @@ export default function Dashboard() {
             onClick={handleLogout}
             className="sm:hidden inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
           >
-            Logout
+            {logoutLoading ? <Loader className="h-5 w-5" /> : "Logout"}
           </button>
           <div className="relative w-full sm:w-64 lg:w-96">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
