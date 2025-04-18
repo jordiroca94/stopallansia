@@ -127,6 +127,8 @@ export async function POST(req: NextRequest) {
           description,
           amount,
           paymentID,
+          last4Digits,
+          locale,
         }),
       });
     } catch (err) {
