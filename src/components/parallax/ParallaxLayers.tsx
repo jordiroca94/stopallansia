@@ -4,6 +4,7 @@ import BackgroundLayer from "../../../public/images/backgroundLayer.png";
 import RocketLayer from "../../../public/images/rocket.png";
 
 import React from "react";
+import CanvasBackground from "../CanvasBackground";
 
 const ParallaxLayers = () => {
   const t = useTranslations();
@@ -22,9 +23,10 @@ const ParallaxLayers = () => {
           />
         </div>
       </div>
-      <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center">
-        <TextAnimation>
-          <div className="flex flex-col mb-[35%] sm:mb-[15%] text-black">
+      <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center relative min-h-screen overflow-hidden bg-[#2d112b]">
+        <CanvasBackground />
+        <TextAnimation className="relative z-10">
+          <div className="flex flex-col mb-[35%] sm:mb-[15%] text-white">
             <h1 className="text-xl md:text-6xl font-bold font-secondary">
               STOP ALL ANSIA
             </h1>

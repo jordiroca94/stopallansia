@@ -1,5 +1,4 @@
 import Countdown from "./Countdown";
-import { Link } from "@/i18n/routing";
 import Footer from "../Footer";
 import KeyboardAnimation from "../animations/KeyboardAnimation";
 import SimpleAnimation from "../animations/SimpleAnimation";
@@ -40,14 +39,25 @@ const ParallaxCover = () => {
             once
           />
         </div>
-        <SimpleAnimation className="mt-8">
+        <div className="mx-auto mt-8 flex justify-center">
+          <a
+            href=""
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-bold text-[#2d112b] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            <span className="absolute h-0 w-0 rounded-full bg-black opacity-10 transition-all duration-300 group-hover:h-56 group-hover:w-56"></span>
+            <span className="relative flex items-center">
+              <span>BUY TICKETS</span>
+            </span>
+          </a>
+        </div>
+        {/* <SimpleAnimation className="mt-8">
           <Link
             href="/reserve"
             className="font-bold text-base uppercase border-white border py-3 px-6 rounded-md hover:bg-white hover:text-black"
           >
             {t("RESERVE")}
           </Link>
-        </SimpleAnimation>
+        </SimpleAnimation> */}
       </div>
       <Footer />
     </div>

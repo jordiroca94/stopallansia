@@ -22,7 +22,7 @@ const Header = ({ parallax = false }: { parallax?: boolean }) => {
     >
       <Link
         href="/"
-        className="font-bold text-2xl uppercase font-secondary text-black "
+        className="font-bold text-2xl uppercase font-secondary text-black border-white border rounded-full"
       >
         {logo}
       </Link>

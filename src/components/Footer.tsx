@@ -1,44 +1,42 @@
 import React from "react";
-import { FaInstagram, FaGithub } from "react-icons/fa";
-import Logo from "../icons/footerLogo";
-import { useTranslations } from "next-intl";
+import { BsInstagram } from "react-icons/bs";
+import Link from "next/link";
 
 const Footer = () => {
-  const t = useTranslations();
+  // const t = useTranslations();
 
   return (
-    <footer className="flex justify-center items-center p-10 border-t border-white bg-black text-white">
-      <div className="flex flex-col justify-center items-center gap-4">
-        <a
-          target="_blank"
-          className="flex flex-col gap-2 items-center"
-          href="https://www.instagram.com/stop.all.ansia/"
-        >
-          <h5 className="text-center font-bold text-base hover:underline">
-            {t("STAY_UPDATED")}
-          </h5>
-          <FaInstagram className="size-6 lg:size-7 transition-transform duration-300 hover:scale-125" />
-        </a>
+    <footer className="border-t py-10 px-4 bg-black">
+      <div className="container mx-auto max-w-4xl">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0">
+            <a
+              href="mailto:jordirocasoler94@gmail.com"
+              className="mt-2 hover:text-red-500 transition-colors"
+            >
+              info@stopallansia.com
+            </a>
+            <p className="text-gray-400 mt-2">
+              © {new Date().getFullYear()} Stop All Ansia Festival
+            </p>
+          </div>
 
-        <div>{Logo}</div>
-
-        <div className="flex items-center gap-2 text-base mt-2 ">
-          Developed by
-          <a
-            href="https://jordirocasoler.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:animate-pulse"
-          >
-            Jordi Roca
-          </a>
-          <a
-            href="https://github.com/jordiroca94"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className="size-5 transition-transform duration-300 hover:scale-125" />
-          </a>
+          <div className="flex flex-col items-center md:items-end">
+            <Link
+              href="https://instagram.com/stopallansiaofficial"
+              target="_blank"
+              className="hover:text-red-500 transition-colors flex items-center gap-2"
+            >
+              <p>Stay updated on the latest info</p>
+              <BsInstagram className="mr-2" size={20} />
+            </Link>
+            <Link
+              href="https://jordirocasoler.com/"
+              className="text-red-500 flex items-center"
+            >
+              <span>Developed by Jordi Roca</span>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
