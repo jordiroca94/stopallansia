@@ -16,21 +16,17 @@ export const routing = defineRouting({
       es: "/quienes-somos",
       it: "/chi-siamo",
     },
-    "/reserve": {
-      en: "/reserve",
-      es: "/reservar",
-      it: "/riservare",
+    "/tickets": {
+      en: "/tickets",
+      es: "/tickets",
+      it: "/tickets",
     },
     "/artists": {
       en: "/artists",
       es: "/artistas",
       it: "/artisti",
     },
-    "/reserve-tickets": {
-      en: "/reserve-tickets",
-      es: "/reservar-tickets",
-      it: "/riservare-tickets",
-    },
+
     "/payment-success": {
       en: "/payment-success",
       es: "/pago-realizado",

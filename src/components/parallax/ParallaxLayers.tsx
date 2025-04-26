@@ -1,45 +1,29 @@
 import { useTranslations } from "next-intl";
 import TextAnimation from "../animations/TextAnimation";
-import BackgroundLayer from "../../../public/images/backgroundLayer.png";
-import RocketLayer from "../../../public/images/rocket.png";
 
 import React from "react";
-import CanvasBackground from "../CanvasBackground";
+import CanvasBackground from "../canvas/CanvasBackground";
 
 const ParallaxLayers = () => {
   const t = useTranslations();
 
   return (
-    <>
-      <div className="parallax__layer parallax__layer__background">
-        <img src={BackgroundLayer.src} alt="Background layer" />
-      </div>
-      <div className="parallax__layer parallax__layer__rocket sm:hidden">
-        <div className="flex justify-center">
-          <img
-            className="size-64 -mb-[10%] "
-            src={RocketLayer.src}
-            alt="Rocket"
-          />
+    <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center relative min-h-screen overflow-hidden bg-[#2d112b]">
+      <CanvasBackground />
+      <TextAnimation className="relative z-10">
+        <div className="flex flex-col mb-[35%] sm:mb-[15%] text-white">
+          <h1 className="text-xl md:text-6xl font-bold font-secondary">
+            STOP ALL ANSIA
+          </h1>
+          <h2 className="text-sm md:text-2xl font-bold py-2">
+            04.07 - 06.07.2025
+          </h2>
+          <h3 className="text-sm md:text-2xl font-bold uppercase">
+            {t("MALLORCA")}
+          </h3>
         </div>
-      </div>
-      <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center relative min-h-screen overflow-hidden bg-[#2d112b]">
-        <CanvasBackground />
-        <TextAnimation className="relative z-10">
-          <div className="flex flex-col mb-[35%] sm:mb-[15%] text-white">
-            <h1 className="text-xl md:text-6xl font-bold font-secondary">
-              STOP ALL ANSIA
-            </h1>
-            <h2 className="text-sm md:text-2xl font-bold py-2">
-              04.07 - 06.07.2025
-            </h2>
-            <h3 className="text-sm md:text-2xl font-bold uppercase">
-              {t("MALLORCA")}
-            </h3>
-          </div>
-        </TextAnimation>
-      </div>
-    </>
+      </TextAnimation>
+    </div>
   );
 };
 

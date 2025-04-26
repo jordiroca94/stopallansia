@@ -38,7 +38,7 @@ const Reserve = () => {
           </TextAnimation>
           <SimpleAnimation>
             <Link
-              href="/reserve-tickets"
+              href="/tickets"
               className="sm:w-fit my-4 lg:mt-10 flex justify-center font-bold text-base uppercase border-black bg-white border py-3 px-6 rounded-md hover:bg-black hover:text-white"
             >
               {t("RESERVE_BUTTON")}

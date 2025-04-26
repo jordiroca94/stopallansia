@@ -81,7 +81,7 @@ export default function LanguageSelector({
 
       {isOpen && (
         <div
-          className={`absolute right-0 mt-2 py-2 w-24 bg-black text-white rounded-md shadow-xl z-20 ${mobile ? "border border-white" : ""}`}
+          className="absolute right-0 mt-2 py-2 w-24 bg-black text-white rounded-md shadow-xl z-20 border border-white"
           role="menu"
         >
           {languages.map((language) => (

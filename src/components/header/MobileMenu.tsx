@@ -14,7 +14,7 @@ export function MobileMenu() {
 
   const navItems = [
     { link: "/about" as const, label: t("ABOUT") },
-    { link: "/reserve" as const, label: t("TICKETS") },
+    { link: "/tickets" as const, label: t("TICKETS") },
     { link: "/artists" as const, label: t("ARTISTS") },
   ];
 

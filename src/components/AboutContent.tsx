@@ -1,8 +1,9 @@
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, Activity } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { CiLocationOn } from "react-icons/ci";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { RiTentLine } from "react-icons/ri";
+import BuyTicketsButton from "./ui/BuyTicketsButton";
 
 export default function AboutContent() {
   const t = useTranslations();
@@ -40,22 +41,23 @@ export default function AboutContent() {
           <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
             <div className="mb-4 flex items-center">
               <Calendar className="mr-3 h-6 w-6" />
-              <h3 className="text-2xl font-bold">Festival Dates</h3>
+              <h3 className="text-2xl font-bold">Dates</h3>
             </div>
-            <p className="text-lg">August 4-07, 2024</p>
+            <p className="text-lg">August 4-6, 2024</p>
             <p className="mt-2 text-lg">Four days of music, art, and nature</p>
           </div>
 
           <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
             <div className="mb-4 flex items-center">
-              <MapPin className="mr-3 h-6 w-6" />
-              <h3 className="text-2xl font-bold"></h3>
+              <Activity className="mr-3 h-6 w-6" />
+              <h3 className="text-2xl font-bold">Vibes</h3>
             </div>
-            <p className="text-lg"></p>
-            <p className="mt-2 text-lg"></p>
+            <p className="text-lg">Relaxed, intimate, community-driven.</p>
+            <p className="mt-2 text-lg">
+              Come as you are, connect through music.
+            </p>
           </div>
         </div>
-
         <section className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
           <h2 className="mb-6 text-3xl font-bold">What Makes Us Different</h2>
           <div className="grid gap-6 md:grid-cols-3">
@@ -89,15 +91,7 @@ export default function AboutContent() {
           </div>
         </section>
         <div className="mx-auto mt-8 flex justify-center">
-          <a
-            href="#"
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-bold text-[#2d112b] transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            <span className="absolute h-0 w-0 rounded-full bg-black opacity-10 transition-all duration-300 group-hover:h-56 group-hover:w-56"></span>
-            <span className="relative flex items-center">
-              <span>BUY TICKETS</span>
-            </span>
-          </a>
+          <BuyTicketsButton />
         </div>
       </div>
     </div>

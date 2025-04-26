@@ -3,8 +3,6 @@ import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
 
 const Footer = () => {
-  // const t = useTranslations();
-
   return (
     <footer className="border-t py-10 px-4 bg-black">
       <div className="container mx-auto max-w-4xl">
