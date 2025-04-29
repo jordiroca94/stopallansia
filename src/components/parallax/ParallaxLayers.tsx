@@ -8,7 +8,7 @@ const ParallaxLayers = () => {
   const t = useTranslations();
 
   return (
-    <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center relative min-h-screen overflow-hidden bg-[#2d112b]">
+    <div className="parallax__layer parallax__layer__text flex justify-center items-center text-center relative min-h-screen overflow-hidden bg-black">
       <CanvasBackground />
       <TextAnimation className="relative z-10">
         <div className="flex flex-col mb-[35%] sm:mb-[15%] text-white">

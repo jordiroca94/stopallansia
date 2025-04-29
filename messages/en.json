@@ -9,8 +9,6 @@
   "MINUTES": "Minutes",
   "SECONDS": "Seconds",
   "PRIVATE": "Private event",
-  "RESERVE": "Reserve your spot",
-  "STAY_UPDATED": "Stay updated on the latest info",
   "KEYBOARD_ANIMATION": {
     "1": "Stop all Ansia Festival is a creative retreat that unites nature,",
     "2": "people and art in a journey away from everyday anxiety"
@@ -21,11 +19,22 @@
     "3": "people and art in a journey",
     "4": "away from everyday anxiety."
   },
-  "ABOUT_TITLE": "What is Stop All Ansia",
-  "ABOUT_DESCRIPTION": {
-    "1": "An opportunity to embrace, grow, and fully immerse oneself in the present moment with an open heart and mind.",
-    "2": "This is a space where art transcends limitations, cultivating an authentic and lasting exchange between diverse forms of expression.",
-    "3": "Stop all Ansia Festival is a creative retreat that unites nature, people and art in a journey away from everyday anxiety."
+  "BUY_TICKETS": "Buy tickets",
+  "ABOUT_SUBTITLE": "Where music and nature create perfect harmony",
+  "ABOUT_STORY": {
+    "TITLE": "Our story",
+    "1": "Founded in 2023, Stop All Ansia Festival was born from a vision to create a space where music and nature could coexist in perfect balance. What started as a small gathering of like-minded artists and nature enthusiasts has grown into one of the most anticipated music festivals celebrating the connection between artistic expression and environmental consciousness.",
+    "2": "Stop all Ansia Festival is a creative retreat that unites nature, people, and art in a journey away from everyday anxiety. It offers an opportunity to embrace, grow, and fully immerse oneself in the present moment with an open heart and mind."
+  },
+  "ABOUT_DATES": {
+    "TITLE": "Dates",
+    "1": "August 4-6, 2024",
+    "2": "Four days of music, art, and nature"
+  },
+  "ABOUT_VIBES": {
+    "TITLE": "Vibes",
+    "1": "Relaxed, intimate, community-driven.",
+    "2": "Come as you are, connect through music."
   },
   "ABOUT_CARDS": {
     "1": {
@@ -38,33 +47,48 @@
     },
     "3": {
       "TITLE": "Eat & Drink",
-      "DESCRIPTION": "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site).You are also welcome to bring your own food."
+      "DESCRIPTION": "To help us organize, you can pre-order your meals when reserving your spot at the event (you can always buy them on-site)."
     }
   },
-  "RESERVE_TITLE": "Reserve your spot",
-  "RESERVE_SUBTITLE": "How to reserve your spot",
-  "RESERVE_SUBTITLE_2": "Fill the form, then keep an eye on your email",
-  "RESERVE_DESCRIPTION": {
-    "1": "Choose your pass based on when you plan to attend the event, and let us know in advance if you d like to reserve meals (you can always buy them on-site, but giving us a heads-up helps us with planning)",
-    "2": "Remember, submitting this form does not mean your spot is confirmed.",
-    "3": "Once we review the reservation, we will send you a preliminary confirmation and the participation contribution* request via email.",
-    "4": "Your booking will be confirmed after we receive your participation contribution.",
-    "5": "*Participation contribution covers the costs of realizing the event; it does not in any way represent a profit for the organizers. It depends on the pass you choose (Full or Day pass meals)."
+  "RESERVE_TITLE": "Get your tickets",
+  "RESERVE_CARDS": {
+    "1": {
+      "TITLE": "Early Bird",
+      "DESCRIPTION": "Limited tickets available at a special price.",
+      "FEATURES": {
+        "1": "Access to all main stages",
+        "2": "Camping access (tent not included)",
+        "3": "Access to food vendors and bars",
+        "4": "Festival app access"
+      }
+    },
+    "2": {
+      "TITLE": "Regular",
+      "DESCRIPTION": "Standard tickets available for purchase.",
+      "FEATURES": {
+        "1": "Access to all main stages",
+        "2": "Camping access (tent not included)",
+        "3": "Access to food vendors and bars",
+        "4": "Festival app access",
+        "5": "Tote bag"
+      }
+    },
+    "3": {
+      "TITLE": "VIP",
+      "DESCRIPTION": "Exclusive access to premium areas and amenities.",
+      "FEATURES": {
+        "1": "Access to all stages including VIP viewing areas",
+        "2": "Premium camping area",
+        "3": "VIP lounge access with complimentary drinks",
+        "4": "Festival merchandise pack",
+        "5": "Fast-track entry",
+        "6": "Backstage tour"
+      }
+    }
   },
-  "RESERVE_BUTTON": "Reserve your spot",
-  "RESERVE_TICKETS_TITLE": "Chose your plan",
-  "RESERVE_TICKETS_SUBTITLE": "Select the type of pass you want to buy.",
-  "RESERVE_TICKETS_SUBTITLE_2": "You can bring your tent for free or reserve a spot in our glamping tent",
-  "RESERVE_TICKETS_PASS": {
-    "1": "Full Pass | Complete access from Friday 4th, Sunday 6th, 12 PM [from 80 €]",
-    "2": "Friday Pass | Complete access from Friday 4th, Saturday 5th, 12 PM [from 50 €]",
-    "3": "Saturday Pass | Complete access from Saturday 5th, Sunday 6th, 12 PM [from 50 €]"
-  },
-  "RESERVE_TICKETS_PASS_UNPRICED": {
-    "1": "Full Pass | Complete access from Friday 4th, Sunday 6th",
-    "2": "Friday Pass | Complete access from Friday 4th, Saturday 5th",
-    "3": "Saturday Pass | Complete access from Saturday 5th, Sunday 6th"
-  },
+
+  "RESERVE_SELECTED": "Selected",
+  "RESERVE_SELECT": "Select",
   "RESERVE_TICKETS_WARNING": "This payment is in development mode and does not represent a real transaction or booking confirmation.",
   "RESERVE_TICKETS_NAME": "Full name",
   "RESERVE_TICKETS_NAME_PLACEHOLDER": "Your full name",
@@ -92,5 +116,7 @@
     "14": "Sova Sunset bring raw energy to the stage, mixing gritty vocals and distorted guitars born on the streets of Milan. Composed of Federico Navarra (vocals and guitar), Samuele Roda (drums), Gabriele Umana (guitar, bass, keyboards) and Gianluca Sansone (guitar), the band blends alternative rock and punk, creating a powerful and electrifying sound",
     "15": "Techno Koffie is a collective of three: Federico, Guido and Jacopo. It started by adding a techno twist to the italian ritual of drinking coffee with friends during the dull Sunday afternoons. Techno Koffie is now a recognisable name among the techno lovers in the Netherlands.",
     "16": "Veezo is a pianist and producer rooted in jazz. Raised with hiphop and in love with electronica, he draws inspiration from artists such as Ahmad Jamal, Fela Kuti and Piero Umiliani."
-  }
+  },
+  "FOOTER_INSTAGRAM": "Stay updated on the latest info",
+  "FOOTER_DEVELOPED": "Developed by Jordi Roca"
 }

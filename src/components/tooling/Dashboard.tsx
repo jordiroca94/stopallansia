@@ -6,7 +6,6 @@ import { IoChevronBackOutline } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
 import Loader from "../ui/Loader";
 import { HiOutlineMail } from "react-icons/hi";
-import { translatePass } from "./translatePass";
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
@@ -168,11 +167,11 @@ export default function Dashboard() {
       </div>
 
       {/* Search and filters */}
-      <div className="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-6 text-black">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <button
             onClick={handleLogout}
-            className="sm:hidden inline-block bg-red/70 hover:bg-white text-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
+            className="sm:hidden inline-block bg-red/70 hover:bg-white hover:text-red/70 hover:border-red/70 hover:border font-semibold px-4 py-2 rounded hover:bg-gray-100 transition whitespace-nowrap"
           >
             {logoutLoading ? <Loader className="h-5 w-5" /> : "Logout"}
           </button>
@@ -264,7 +263,7 @@ export default function Dashboard() {
                           {payment.email}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {translatePass(payment.description)}
+                          {payment.description}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {payment.paymentID}

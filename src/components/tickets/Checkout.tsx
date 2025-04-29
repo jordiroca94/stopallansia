@@ -84,15 +84,15 @@ const Checkout = ({ amount, description }: Props) => {
 
   if (!clientSecret || !stripe || !elements) {
     return (
-      <div className="flex items-center justify-center w-full md:w-[600px]">
-        <Loader />
+      <div className="flex items-center justify-center w-ful">
+        <Loader big />
       </div>
     );
   }
 
   return (
-    <div className="w-full flex justify-start">
-      <div className="p-2 rounded-md w-full md:w-[600px]">
+    <div className="w-full flex justify-center">
+      <div className="rounded-md w-full md:w-[600px] bg-white/50 shadow-lg p-4 text-black">
         <div className="mb-8 border-red border-2 rounded-md p-3">
           <strong>⚠️ {t("PAYEMNT_SUCCESS_DEVELOPMENT")}: </strong>
           {t("RESERVE_TICKETS_WARNING")}
@@ -105,10 +105,7 @@ const Checkout = ({ amount, description }: Props) => {
         {clientSecret && (
           <>
             <div className="mb-4">
-              <label
-                htmlFor="name"
-                className="block text-sm text-[#30313d] mb-2"
-              >
+              <label htmlFor="name" className="block text-sm mb-2">
                 {t("RESERVE_TICKETS_NAME")}
               </label>
               <input
@@ -119,7 +116,7 @@ const Checkout = ({ amount, description }: Props) => {
                   setName(e.target.value);
                   setNameError("");
                 }}
-                className="block w-full px-3 py-2.5 text-base border border-lightGray rounded-md shadow-sm placeholder-gray/90 placeholder:font-light focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition duration-150 ease-in-out"
+                className="block w-full px-3 py-2.5 text-base border border-lightGray rounded-md shadow-sm placeholder-gray/90 placeholder:font-light focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none transition duration-150 ease-in-out text-black"
                 placeholder={t("RESERVE_TICKETS_NAME_PLACEHOLDER")}
                 required
               />
@@ -134,13 +131,18 @@ const Checkout = ({ amount, description }: Props) => {
             )}
           </>
         )}
-        <button
-          onClick={handlePayment}
-          disabled={!stripe || loading}
-          className="text-white w-full p-5 bg-black mt-2 rounded-md font-bold disabled:opacity-50 disabled:animate-pulse"
-        >
-          {!loading ? `${t("PAY")} $${amount}` : <Loader />}
-        </button>
+        <div className="flex flex-col items-center ">
+          <button
+            onClick={handlePayment}
+            disabled={!stripe || loading}
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-bold text-black transition-all duration-300 hover:scale-105 hover:shadow-lg mt-6 w-60"
+          >
+            <span className="absolute h-0 w-0 rounded-full bg-black opacity-10 transition-all duration-300 group-hover:h-56 group-hover:w-56"></span>
+            <span className="relative flex items-center">
+              {!loading ? `${t("PAY")} $${amount}` : <Loader />}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

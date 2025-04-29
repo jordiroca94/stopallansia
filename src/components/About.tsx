@@ -1,70 +1,84 @@
-import React from "react";
-import Container from "./ui/Container";
-import Image from "next/image";
-import AboutImage from "../../public/images/about.png";
-import Grid from "./ui/Grid";
-import SimpleAnimation from "./animations/SimpleAnimation";
-import TextAnimation from "./animations/TextAnimation";
-import { CiLocationOn } from "react-icons/ci";
-import { RiTentLine } from "react-icons/ri";
-import { IoFastFoodOutline } from "react-icons/io5";
+import { Calendar, Activity } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { CiLocationOn } from "react-icons/ci";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { RiTentLine } from "react-icons/ri";
+import BuyTicketsButton from "./ui/BuyTicketsButton";
 
-const About = () => {
+export default function About() {
   const t = useTranslations();
-
-  const cards = [
-    {
-      title: t("ABOUT_CARDS.1.TITLE"),
-      description: t("ABOUT_CARDS.1.DESCRIPTION"),
-      icon: <CiLocationOn className="size-8" />,
-    },
-    {
-      title: t("ABOUT_CARDS.2.TITLE"),
-      description: t("ABOUT_CARDS.2.DESCRIPTION"),
-      icon: <RiTentLine className="size-8" />,
-    },
-    {
-      title: t("ABOUT_CARDS.3.TITLE"),
-      description: t("ABOUT_CARDS.3.DESCRIPTION"),
-      icon: <IoFastFoodOutline className="size-8" />,
-    },
-  ];
-
   return (
-    <Container>
-      <Grid>
-        <SimpleAnimation className="col-span-full border-b pb-5 border-gray">
-          <h1 className="text-3xl lg:text-5xl font-semibold font-secondary">
-            {t("ABOUT_TITLE")}
-          </h1>
-        </SimpleAnimation>
-        <div className="col-span-4 lg:col-span-6 text-base text-justify">
-          <TextAnimation className="flex flex-col gap-3">
-            <p>{t("ABOUT_DESCRIPTION.1")}</p>
-            <p>{t("ABOUT_DESCRIPTION.2")}</p>
-            <p>{t("ABOUT_DESCRIPTION.3")}</p>
-          </TextAnimation>
+    <div className="container mx-auto px-4 py-16 text-white">
+      <div className="mb-16 text-center">
+        <h1 className="mb-4 text-5xl font-bold tracking-tight md:text-6xl">
+          Stop All Ansia
+        </h1>
+        <p className="mx-auto max-w-2xl text-xl opacity-90">
+          {t("ABOUT_SUBTITLE")}
+        </p>
+      </div>
+
+      <div className="mx-auto max-w-4xl space-y-16">
+        <section className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
+          <h2 className="mb-6 text-3xl font-bold">{t("ABOUT_STORY.TITLE")}</h2>
+          <p className="mb-4 text-lg">{t("ABOUT_STORY.1")}</p>
+          <p className="text-lg">{t("ABOUT_STORY.2")}</p>
+        </section>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
+            <div className="mb-4 flex items-center">
+              <Calendar className="mr-3 h-6 w-6" />
+              <h3 className="text-2xl font-bold">{t("ABOUT_DATES.TITLE")}</h3>
+            </div>
+            <p className="text-lg">{t("ABOUT_DATES.1")}</p>
+            <p className="mt-2 text-lg">{t("ABOUT_DATES.2")}</p>
+          </div>
+
+          <div className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
+            <div className="mb-4 flex items-center">
+              <Activity className="mr-3 h-6 w-6" />
+              <h3 className="text-2xl font-bold">{t("ABOUT_VIBES.TITLE")}</h3>
+            </div>
+            <p className="text-lg">{t("ABOUT_VIBES.1")}</p>
+            <p className="mt-2 text-lg">{t("ABOUT_VIBES.2")} </p>
+          </div>
         </div>
-        <SimpleAnimation className="lg:col-start-8 col-span-4 lg:col-span-5">
-          <Image className="rounded-md" src={AboutImage} alt="Who are we?" />
-        </SimpleAnimation>
-      </Grid>
-      <Grid className="py-6 lg:py-12 gap-8">
-        {cards.map((card) => (
-          <div key={card.title} className="card col-span-4">
-            <div className="cardContent">
-              <h2 className="cardTitle flex justify-center ">{card.title}</h2>
-              <div className="text-white w-full flex justify-center py-2">
-                {card.icon}
+        <section className="rounded-xl bg-white/10 p-8 backdrop-blur-sm">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 rounded-full bg-white/20 p-4">
+                <CiLocationOn className="size-8" />{" "}
               </div>
-              <p className="cardDescription text-center">{card.description}</p>
+              <h3 className="mb-2 text-xl font-semibold">
+                {t("ABOUT_CARDS.1.TITLE")}
+              </h3>
+              <p>{t("ABOUT_CARDS.1.DESCRIPTION")}</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 rounded-full bg-white/20 p-4">
+                <RiTentLine className="size-8" />{" "}
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">
+                {t("ABOUT_CARDS.2.TITLE")}
+              </h3>
+              <p>{t("ABOUT_CARDS.2.DESCRIPTION")}</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4 rounded-full bg-white/20 p-4">
+                <IoFastFoodOutline className="size-8" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">
+                {t("ABOUT_CARDS.3.TITLE")}
+              </h3>
+              <p>{t("ABOUT_CARDS.3.DESCRIPTION")}</p>
             </div>
           </div>
-        ))}
-      </Grid>
-    </Container>
+        </section>
+        <div className="mx-auto mt-8 flex justify-center">
+          <BuyTicketsButton />
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default About;
+}

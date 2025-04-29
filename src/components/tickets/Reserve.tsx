@@ -1,64 +1,71 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Music } from "lucide-react";
+import { Check } from "lucide-react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import convertToSubcurrency from "@/lib/convertToSubcurrency";
+import { useLocale, useTranslations } from "next-intl";
+import Checkout from "./Checkout";
+
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+  throw new Error("Stripe public key is not defined");
+}
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function TicketsContent() {
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
+  const [amount, setAmount] = useState<number | null>(null);
+  const [description, setDescription] = useState("");
+  const t = useTranslations();
+  const locale = useLocale();
 
   const tickets = [
     {
       id: "early-bird",
-      name: "Early Bird",
-      price: 199,
-      description: "General admission for all 4 days",
+      name: t("RESERVE_CARDS.1.TITLE"),
+      price: 149,
+      description: t("RESERVE_CARDS.1.DESCRIPTION"),
       features: [
-        "Access to all main stages",
-        "Camping access (tent not included)",
-        "Access to food vendors and bars",
-        "Festival app access",
+        t("RESERVE_CARDS.1.FEATURES.1"),
+        t("RESERVE_CARDS.1.FEATURES.2"),
+        t("RESERVE_CARDS.1.FEATURES.3"),
+        t("RESERVE_CARDS.1.FEATURES.4"),
       ],
-      available: true,
-      popular: false,
     },
     {
       id: "regular",
-      name: "Regular",
-      price: 249,
-      description: "Full festival experience",
+      name: t("RESERVE_CARDS.2.TITLE"),
+      price: 199,
+      description: t("RESERVE_CARDS.2.DESCRIPTION"),
       features: [
-        "Access to all main stages",
-        "Camping access (tent not included)",
-        "Access to food vendors and bars",
-        "Festival app access",
-        "Tote bag",
+        t("RESERVE_CARDS.2.FEATURES.1"),
+        t("RESERVE_CARDS.2.FEATURES.2"),
+        t("RESERVE_CARDS.2.FEATURES.3"),
+        t("RESERVE_CARDS.2.FEATURES.4"),
+        t("RESERVE_CARDS.2.FEATURES.5"),
       ],
-      available: true,
-      popular: true,
     },
     {
       id: "vip",
-      name: "VIP",
-      price: 399,
-      description: "Premium festival experience",
+      name: t("RESERVE_CARDS.3.TITLE"),
+      price: 299,
+      description: t("RESERVE_CARDS.3.DESCRIPTION"),
       features: [
-        "Access to all stages including VIP viewing areas",
-        "Premium camping area",
-        "VIP lounge access with complimentary drinks",
-        "Festival merchandise pack",
-        "Backstage tour",
-        "Fast-track entry",
+        t("RESERVE_CARDS.3.FEATURES.1"),
+        t("RESERVE_CARDS.3.FEATURES.2"),
+        t("RESERVE_CARDS.3.FEATURES.3"),
+        t("RESERVE_CARDS.3.FEATURES.4"),
+        t("RESERVE_CARDS.3.FEATURES.5"),
       ],
-      available: true,
-      popular: false,
     },
   ];
 
   return (
     <div className="container mx-auto px-4 py-16 text-white">
       <div className="mb-16 text-center">
-        <h1 className="mb-4 text-5xl font-bold tracking-tight md:text-6xl">
-          Get Your Tickets
+        <h1 className="mb-4 text-5xl font-bold tracking-tight md:text-6xl capitalize">
+          {t("RESERVE_TITLE")}
         </h1>
       </div>
 
@@ -77,8 +84,7 @@ export default function TicketsContent() {
               <div className="rounded-lg bg-white/10 p-6 backdrop-blur-sm">
                 <h3 className="mb-1 text-2xl font-bold">{ticket.name}</h3>
                 <div className="mb-4 flex items-baseline">
-                  <span className="text-3xl font-bold">${ticket.price}</span>
-                  <span className="ml-1 text-sm opacity-80">/ person</span>
+                  <span className="text-3xl font-bold">{ticket.price} €</span>
                 </div>
                 <p className="mb-4 text-sm opacity-90">{ticket.description}</p>
 
@@ -92,144 +98,38 @@ export default function TicketsContent() {
                 </ul>
 
                 <button
-                  onClick={() => setSelectedTicket(ticket.id)}
+                  onClick={() => {
+                    setSelectedTicket(ticket.id);
+                    setAmount(ticket.price);
+                    setDescription(ticket.name);
+                  }}
                   className={`w-full rounded-full py-3 text-center font-bold transition-all duration-300 ${
                     selectedTicket === ticket.id
-                      ? "bg-white text-[#2d112b]"
+                      ? "bg-white text-black"
                       : "bg-white/20 text-white hover:bg-white/30"
                   }`}
                 >
-                  {selectedTicket === ticket.id ? "SELECTED" : "SELECT"}
+                  {selectedTicket === ticket.id
+                    ? t("RESERVE_SELECTED")
+                    : t("RESERVE_SELECT")}
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Checkout Form */}
-        {selectedTicket && (
-          <div className="mb-16 rounded-xl bg-white/10 p-8 backdrop-blur-sm">
-            <h2 className="mb-6 text-3xl font-bold">Complete Your Purchase</h2>
-
-            <form className="grid gap-6 md:grid-cols-2">
-              <div className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="fullName"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    className="w-full rounded-md border border-white/20 bg-white/5 p-3 text-white placeholder-white/50 backdrop-blur-sm focus:border-white/50 focus:outline-none"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full rounded-md border border-white/20 bg-white/5 p-3 text-white placeholder-white/50 backdrop-blur-sm focus:border-white/50 focus:outline-none"
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full rounded-md border border-white/20 bg-white/5 p-3 text-white placeholder-white/50 backdrop-blur-sm focus:border-white/50 focus:outline-none"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="quantity"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Number of Tickets
-                  </label>
-                  <select
-                    id="quantity"
-                    className="w-full rounded-md border border-white/20 bg-white/5 p-3 text-white backdrop-blur-sm focus:border-white/50 focus:outline-none"
-                  >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="promoCode"
-                    className="mb-2 block text-sm font-medium"
-                  >
-                    Promo Code (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="promoCode"
-                    className="w-full rounded-md border border-white/20 bg-white/5 p-3 text-white placeholder-white/50 backdrop-blur-sm focus:border-white/50 focus:outline-none"
-                    placeholder="Enter promo code if you have one"
-                  />
-                </div>
-
-                <div className="flex items-start space-x-2 pt-4">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    className="mt-1 h-4 w-4 rounded border-white/20 bg-white/5 text-[#2d112b]"
-                  />
-                  <label htmlFor="terms" className="text-sm">
-                    I agree to the{" "}
-                    <a href="#" className="underline">
-                      Terms & Conditions
-                    </a>{" "}
-                    and{" "}
-                    <a href="#" className="underline">
-                      Privacy Policy
-                    </a>
-                  </label>
-                </div>
-              </div>
-
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-bold text-[#2d112b] transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
-                  <span className="absolute h-0 w-0 rounded-full bg-[#2d112b] opacity-10 transition-all duration-300 group-hover:h-56 group-hover:w-56"></span>
-                  <span className="relative flex items-center">
-                    <span>PROCEED TO PAYMENT</span>
-                    <span className="ml-2 rounded-full bg-[#2d112b] p-1 text-white">
-                      <Music className="h-4 w-4" />
-                    </span>
-                  </span>
-                </button>
-              </div>
-            </form>
-          </div>
+        {amount && selectedTicket !== null && (
+          <Elements
+            stripe={stripePromise}
+            options={{
+              mode: "payment",
+              amount: convertToSubcurrency(amount),
+              currency: "eur",
+              locale: locale as "en" | "es" | "it",
+            }}
+          >
+            <Checkout amount={amount} description={description} />
+          </Elements>
         )}
       </div>
     </div>

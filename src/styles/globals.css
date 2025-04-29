@@ -39,16 +39,8 @@ body {
   }
 }
 
-.parallax__layer__background {
-  transform: translateZ(0px) scale(1);
-}
-
 .parallax__layer__text {
   transform: translateZ(-400px) scale(5);
-}
-
-.parallax__layer__rocket {
-  transform: translateZ(100px) scale(0.5);
 }
 
 /* HEADER BUTTONS */

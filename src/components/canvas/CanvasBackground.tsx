@@ -226,8 +226,7 @@ export default function CanvasBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed left-0 top-0 h-full w-full"
-      style={{ background: "#2d112b" }}
+      className="fixed left-0 top-0 h-full w-full bg-black"
     />
   );
 }
