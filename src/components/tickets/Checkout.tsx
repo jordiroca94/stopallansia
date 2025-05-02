@@ -11,13 +11,9 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { useLocale, useTranslations } from "next-intl";
 import SimpleAnimation from "../animations/SimpleAnimation";
 import Loader from "../ui/Loader";
+import { TicketType } from "./Tickets";
 
-type Props = {
-  amount: number;
-  description: string;
-};
-
-const Checkout = ({ amount, description }: Props) => {
+const Checkout = ({ ticket }: { ticket: TicketType }) => {
   const t = useTranslations();
 
   const stripe = useStripe();
@@ -36,15 +32,15 @@ const Checkout = ({ amount, description }: Props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        description: description,
-        amount: convertToSubcurrency(amount),
+        description: ticket.name,
+        amount: convertToSubcurrency(ticket.price),
         locale: locale,
         name: name,
       }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
-  }, [amount, description, locale, name]);
+  }, [ticket, locale, name]);
 
   const handlePayment = async () => {
     setLoading(true);
@@ -139,7 +135,7 @@ const Checkout = ({ amount, description }: Props) => {
           >
             <span className="absolute h-0 w-0 rounded-full bg-black opacity-10 transition-all duration-300 group-hover:h-56 group-hover:w-56"></span>
             <span className="relative flex items-center">
-              {!loading ? `${t("PAY")} $${amount}` : <Loader />}
+              {!loading ? `${t("PAY")} $${ticket.price}` : <Loader />}
             </span>
           </button>
         </div>

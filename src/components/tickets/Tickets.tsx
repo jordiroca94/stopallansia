@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -13,12 +13,29 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 }
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-export default function TicketsContent() {
-  const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
-  const [amount, setAmount] = useState<number | null>(null);
-  const [description, setDescription] = useState("");
+export type TicketType = {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  features: string[];
+};
+
+export default function Tickets() {
+  const [selectedTicket, setSelectedTicket] = useState<TicketType | null>(null);
+  const checkoutRef = useRef<HTMLDivElement | null>(null);
+
   const t = useTranslations();
   const locale = useLocale();
+
+  useEffect(() => {
+    if (selectedTicket && checkoutRef.current) {
+      checkoutRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [selectedTicket]);
 
   const tickets = [
     {
@@ -70,13 +87,12 @@ export default function TicketsContent() {
       </div>
 
       <div className="mx-auto max-w-5xl">
-        {/* Ticket Selection */}
         <div className="mb-16 grid gap-6 md:grid-cols-3">
           {tickets.map((ticket) => (
             <div
               key={ticket.id}
               className={`relative rounded-xl p-1 transition-all duration-300 ${
-                selectedTicket === ticket.id
+                selectedTicket?.id === ticket.id
                   ? "scale-105 bg-gradient-to-br from-white/50 to-white/20"
                   : "bg-white/5 hover:bg-white/10"
               } border-white/30`}
@@ -99,17 +115,15 @@ export default function TicketsContent() {
 
                 <button
                   onClick={() => {
-                    setSelectedTicket(ticket.id);
-                    setAmount(ticket.price);
-                    setDescription(ticket.name);
+                    setSelectedTicket(ticket);
                   }}
                   className={`w-full rounded-full py-3 text-center font-bold transition-all duration-300 ${
-                    selectedTicket === ticket.id
+                    selectedTicket?.id === ticket.id
                       ? "bg-white text-black"
                       : "bg-white/20 text-white hover:bg-white/30"
                   }`}
                 >
-                  {selectedTicket === ticket.id
+                  {selectedTicket?.id === ticket.id
                     ? t("RESERVE_SELECTED")
                     : t("RESERVE_SELECT")}
                 </button>
@@ -118,18 +132,20 @@ export default function TicketsContent() {
           ))}
         </div>
 
-        {amount && selectedTicket !== null && (
-          <Elements
-            stripe={stripePromise}
-            options={{
-              mode: "payment",
-              amount: convertToSubcurrency(amount),
-              currency: "eur",
-              locale: locale as "en" | "es" | "it",
-            }}
-          >
-            <Checkout amount={amount} description={description} />
-          </Elements>
+        {selectedTicket !== null && (
+          <div ref={checkoutRef}>
+            <Elements
+              stripe={stripePromise}
+              options={{
+                mode: "payment",
+                amount: convertToSubcurrency(selectedTicket.price),
+                currency: "eur",
+                locale: locale as "en" | "es" | "it",
+              }}
+            >
+              <Checkout ticket={selectedTicket} />
+            </Elements>
+          </div>
         )}
       </div>
     </div>

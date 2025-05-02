@@ -1,4 +1,4 @@
-import Reserve from "@/components/tickets/Reserve";
+import Tickets from "@/components/tickets/Tickets";
 import Header from "@/components/header/Header";
 import CanvasWrapper from "@/components/canvas/CanvasWrapper";
 
@@ -7,7 +7,7 @@ export default function page() {
     <main className="flex flex-col">
       <Header />
       <CanvasWrapper>
-        <Reserve />
+        <Tickets />
       </CanvasWrapper>
     </main>
   );
