@@ -19,12 +19,6 @@ body {
   perspective: 100px;
 }
 
-@media (max-width: 768px) {
-  .parallax {
-    perspective: 300px;
-  }
-}
-
 .parallax__layer {
   position: absolute;
   top: 0;

@@ -12,13 +12,13 @@ const ParallaxLayers = () => {
       <CanvasBackground />
       <TextAnimation className="relative z-10">
         <div className="flex flex-col mb-[35%] sm:mb-[15%] text-white">
-          <h1 className="text-xl md:text-6xl font-bold font-secondary">
+          <h1 className="text-4xl md:text-6xl font-bold font-secondary">
             STOP ALL ANSIA
           </h1>
-          <h2 className="text-sm md:text-2xl font-bold py-2">
+          <h2 className="text-xl md:text-2xl font-bold py-2">
             04.07 - 06.07.2025
           </h2>
-          <h3 className="text-sm md:text-2xl font-bold uppercase">
+          <h3 className="text-xl md:text-2xl font-bold uppercase">
             {t("MALLORCA")}
           </h3>
         </div>
