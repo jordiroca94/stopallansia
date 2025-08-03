@@ -11,7 +11,7 @@ interface TimeLeft {
 }
 
 export default function Countdown({
-  targetDate = "2025-07-04",
+  targetDate = "2026-07-03",
 }: {
   targetDate?: string;
 }) {

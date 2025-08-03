@@ -16,7 +16,7 @@ const ParallaxLayers = () => {
             STOP ALL ANSIA
           </h1>
           <h2 className="text-xl md:text-2xl font-bold py-2">
-            04.07 - 06.07.2025
+            03.07 - 05.07.2026
           </h2>
           <h3 className="text-xl md:text-2xl font-bold uppercase">
             {t("MALLORCA")}

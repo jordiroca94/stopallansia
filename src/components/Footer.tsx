@@ -26,7 +26,7 @@ const Footer = () => {
 
           <div className="flex flex-col items-center md:items-end">
             <Link
-              href="https://instagram.com/stopallansiaofficial"
+              href="https://instagram.com/stop.all.ansia"
               target="_blank"
               className="group flex items-center gap-2 transition-transform duration-300 hover:translate-x-1"
             >
